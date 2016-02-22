@@ -24,11 +24,11 @@
         rawData.forEach(function(item){
           var incident = new Incident(item);
         });
-        Incident.loadAll(rows)
+        Incident.loadAll(rows);
         callback();
       });
     };
   };
-  
+
   module.Incident = Incident;
 })(window);
