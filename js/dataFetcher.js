@@ -23,6 +23,10 @@
     })
   };
 
+  dataFetcher.parseData = function(){
+    
+  };
+
 dataFetcher.fetchData();
 
   module.dataFetcher = dataFetcher;
