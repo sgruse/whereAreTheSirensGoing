@@ -8,16 +8,18 @@
     <link rel="stylesheet" type="text/css" href="css/module.css">
     <link rel="stylesheet" type="text/css" href="css/state.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
-      <script id="incident-template" type="text/x-handlebars-template">
-        <article class="incidents">
-          <ul id="incident-list">
-            <li>Type - {{initial_type_group}}</li>
-            <li>Subtype - {{initial_type_subgroup}}</li>
-            <li>Date/Time At Scene - {{at_scene_time}}</li>
-            <li>Location - {{hundred_block_location}}</li>
-          </ul>
-        </article>
-      </script>
+    <script id="incident-template" type="text/x-handlebars-template">
+      <article class="incidents">
+      <li>
+        <ul id="incident-list">
+          <li>Type - {{initial_type_group}}</li>
+          <li>Subtype - {{initial_type_subgroup}}</li>
+          <li>Date/Time At Scene - {{at_scene_time}}</li>
+          <li>Location - {{hundred_block_location}}</li>
+        </ul>
+      </li>
+      </article>
+    </script>
   </head>
 
   <body>
@@ -29,9 +31,9 @@
           <span class="overview">--overview</span>
         </h1>
       </div>
-      <div class="headerdiv" id="headersearch">
+      <div class="headerdiv"  id="search-bar">
         <form>
-          <label>Search</label>
+          <label>Search by Address</label>
           <input type="search">
         </form>
       </div>
@@ -39,8 +41,8 @@
     </header>
 
     <section id="index" class="index">
-      <div>
-        <form>
+      <div id="buttoncontainer">
+        <form id="sirens-go">
             <legend>Where are the Sirens?</legend>
             <input type="text">
             <button type="button">GO!</button>
@@ -49,18 +51,15 @@
     </section>
 
     <section id="results" class="results">
-      <section id="results-container">
-        <div id="results-map"></div>
+        <div id="google-map"></div>
         <h2>INCIDENTS</h2>
-        <div id="incidents-handlebars-here"></div>
-      </section>
+        <ul id="incidents-handlebars-here"></ul>
     </section>
 
     <section id="overview" class="overview">
-      <section id="overview-container">
-        <div id="overview-map"></div>
-        <h2>INCIDENTS</h2>
-      </section>
+      <div id="google-map"></div>
+      <h2>INCIDENTS</h2>
+      <ul id="incidents-handlebars-here"></ul>
     </section>
 
     <footer>
