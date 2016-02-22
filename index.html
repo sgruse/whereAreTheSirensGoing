@@ -8,16 +8,18 @@
     <link rel="stylesheet" type="text/css" href="css/module.css">
     <link rel="stylesheet" type="text/css" href="css/state.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
-      <script id="incident-template" type="text/x-handlebars-template">
-        <article class="incidents">
-          <ul id="incident-list">
-            <li>Type - {{initial_type_group}}</li>
-            <li>Subtype - {{initial_type_subgroup}}</li>
-            <li>Date/Time At Scene - {{at_scene_time}}</li>
-            <li>Location - {{hundred_block_location}}</li>
-          </ul>
-        </article>
-      </script>
+    <script id="incident-template" type="text/x-handlebars-template">
+      <article class="incidents">
+      <li>
+        <ul id="incident-list">
+          <li>Type - {{initial_type_group}}</li>
+          <li>Subtype - {{initial_type_subgroup}}</li>
+          <li>Date/Time At Scene - {{at_scene_time}}</li>
+          <li>Location - {{hundred_block_location}}</li>
+        </ul>
+      </li>
+      </article>
+    </script>
   </head>
 
   <body>
@@ -49,18 +51,12 @@
     </section>
 
     <section id="results" class="results">
-      <section id="results-container">
-        <div id="results-map"></div>
+        <div id="googlemap"></div>
         <h2>INCIDENTS</h2>
-        <div id="incidents-handlebars-here"></div>
-      </section>
+        <ul id="incidents-handlebars-here"></ul>
     </section>
 
     <section id="overview" class="overview">
-      <section id="overview-container">
-        <div id="overview-map"></div>
-        <h2>INCIDENTS</h2>
-      </section>
     </section>
 
     <footer>
