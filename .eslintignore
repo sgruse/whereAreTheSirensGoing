@@ -1,0 +1,11 @@
+README.md
+**.html
+**.css
+**.md
+.gitignore
+css/**
+img/**
+.DS_Store
+.eslintrc
+.eslintignore
+**data.js
