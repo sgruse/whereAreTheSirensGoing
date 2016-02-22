@@ -1,0 +1,83 @@
+<html>
+
+  <head>
+    <title> SIRENS!!! </title>
+    <link rel="stylesheet" type="text/css" href="vendor/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/module.css">
+    <link rel="stylesheet" type="text/css" href="css/state.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+      <script id="incident-template" type="text/x-handlebars-template">
+        <article class="incidents">
+          <ul id="incident-list">
+            <li>Type - {{initial_type_group}}</li>
+            <li>Subtype - {{initial_type_subgroup}}</li>
+            <li>Date/Time At Scene - {{at_scene_time}}</li>
+            <li>Location - {{hundred_block_location}}</li>
+          </ul>
+        </article>
+      </script>
+  </head>
+
+  <body>
+    <header>
+      <div class="headerdiv" id="headersirens">
+        <h1>Follow the Sirens...
+          <span class="index">--index</span>
+          <span class="results">--results</span>
+          <span class="overview">--overview</span>
+        </h1>
+      </div>
+      <div class="headerdiv" id="headersearch">
+        <form>
+          <label>Search</label>
+          <input type="search">
+        </form>
+      </div>
+      <hr>
+    </header>
+
+    <section id="index" class="index">
+      <div>
+        <form>
+            <legend>Where are the Sirens?</legend>
+            <input type="text">
+            <button type="button">GO!</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="results" class="results">
+      <div id="googlemap"></div>
+      <h2>INCIDENTS</h2>
+      <div id="incidents-handlebars-here"></div>
+    </section>
+
+    <section id="overview" class="overview">
+    </section>
+
+    <footer>
+      <hr>
+      Footer
+    </footer>
+
+    <script src="vendor/scripts/jquery-2.1.4.js"></script>
+    <script src="vendor/scripts/page.js"></script>
+    <script src="vendor/scripts/handlebars.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/resultsController.js"></script>
+    <script src="js/resultsContent.js"></script>
+    <script src="js/overviewController.js"></script>
+    <script src="js/overviewContent.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/indexController.js"></script>
+    <script src="js/indexContent.js"></script>
+    <script src="js/dataFetcher.js"></script>
+    <script src="js/aboutController.js"></script>
+    <script src="js/aboutContent.js"></script>
+    <script src="js/incident.js"></script>
+  </body>
+
+</html>
