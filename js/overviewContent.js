@@ -17,7 +17,7 @@
     console.log('resultsContent.renderArticlesAndMapMarkers called');
     Incident.all.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
-      $('#incidents-handlebars-here').append(render(thisIncident));
+      $('#overview-handlebars-here').append(render(thisIncident));
       // Talk about giving specific ID's, EX: Results Handlebars and Overview Handlebars.  Give both classes for styling.
     });
   };

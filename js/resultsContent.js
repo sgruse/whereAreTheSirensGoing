@@ -25,7 +25,7 @@
     console.log('resultsContent.renderArticlesAndMapMarkers called');
     Incident.all.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
-      $('#incidents-handlebars-here').append(render(thisIncident));
+      $('#results-handlebars-here').append(render(thisIncident));
     });
   };
 
