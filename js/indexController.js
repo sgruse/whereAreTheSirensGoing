@@ -1,6 +1,7 @@
 (function(module) {
   indexController = {};
   var $indexMainButton = $('#index-main-button');
+  
   indexController.index = function(){
     console.log('indexController.index called');
     $('#search-bar').hide();
@@ -14,6 +15,11 @@
     });
   };
 
+  indexController.onExit = function(ctx, next){
+    $('#index-form-container').hide();
+    ctx.handled = true;
+    next();
+  };
   // $('#addressSubmit').on('submit', function(event) {
   //   event.preventDefault();
   //   search.processSearchBarInput();

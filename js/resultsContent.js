@@ -5,25 +5,31 @@
 // VIEW - will compile handlebars,
 
 (function(module){
-
   resultsContent = {};
+  var template = Handlebars.compile($('#incident-template').text());
 
-  // var render = function(incident) {
-  //   var template = Handlebars.compile($('#incident-template').text());
-  //
-  //   return template(incident);
-  // };
+  var render = function(incident) {
+    return template(incident);
+  };
 
-  // resultsContent.index = function(incidents) {
-    // console.log('resultsContent.index called');
-    // $('#incidents-handlebars-here').show();
-    // $('#index').hide();
-    // $('#overview').hide();
-    // incidents.forEach(function(a) {
-    //   $('#incidents-handlebars-here').append(render(a));
-    // });
-    //any filter handlers will need to go here
-  // };
+  //this needs to do anything to draw the results page that happens before the police AJAX call comes back
+  //notably, this needs to draw the google map centered at the user's position
+  resultsContent.index = function() {
+    console.log('resultsContent.index called');
+    maps.buildMap([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
+    maps.addMarker([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
+
+  };
+
+  resultsContent.renderArticlesAndMapMarkers = function(incidents){
+    console.log('resultsContent.renderArticlesAndMapMarkers called');
+    Incident.all.forEach(function(thisIncident) {
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      $('#incidents-handlebars-here').append(render(thisIncident));
+    });
+  };
+
+
 
   module.resultsContent = resultsContent;
 })(window);
