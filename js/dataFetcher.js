@@ -17,12 +17,12 @@
     console.log('latitude is ' + latitude);
     console.log('longitude is ' + longitude);
     $.ajax({ //need to figure out how to add any other queries from url, like the filters
-      url: 'https://data.seattle.gov/resource/3k2p-39jp.json'
+      url: 'https://data.seattle.gov/resource/pu5n-trf4.json'
             //What to search for.
-          + '?event_clearance_code=031'//needs to be changed so that this only appears if they specify a type of code to filter by
+          + "?$where=event_clearance_code not in ('NULL','008','009','010','011','012','013','014','015','016','017','018','019','020','021','022','023','024','025','026','027','311','312','313','314','390','391','030','031','032','033','034','035','036','040','050','341','342','343','344','345','346','320','321','322','323','324','347','510','520','271','273','274','275','371','372','373','470','481','465','415')"//needs to be changed so that this only appears if they specify a type of code to filter by
             //Parameters of Search.
-          + '&$order=event_clearance_date DESC'
-          + '&$where=within_circle(incident_location,'+ latitude + ',' + longitude + ',10000)', //need to make the radius a function of the google map zoom level
+          + '&$order=event_clearance_date DESC',
+          // + '&$where=within_circle(incident_location,'+ latitude + ',' + longitude + ',10000)', need to make the radius a function of the google map zoom level
       type: 'GET',
       ContentType: 'json',
       headers: { 'X-App-Token': appToken },
