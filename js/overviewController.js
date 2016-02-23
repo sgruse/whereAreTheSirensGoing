@@ -13,14 +13,16 @@
 
     $.ajax({
       url: 'https://data.seattle.gov/resource/3k2p-39jp.json'
-          + '?$order=event_clearance_date DESC'
-          + 'where=within_circle(incident_location,' + latitude + ',' + longitude + ',10000)',
+          + '?$order=event_clearance_date DESC',
+          // + 'where=within_circle(incident_location,' + latitude + ',' + longitude + ',10000)',
       type: 'GET',
       ContentType: 'json',
       headers: { 'X-App-Token': appToken },
       success: function(data, message, xhr) {
         dataFetcher.parseData(data);
+        console.log(data);
         ctx.handled = true;
+        console.log(ctx);
         next();
       },
       error: function(){
@@ -33,11 +35,12 @@
 //Could be placed in overviewContent
   overviewController.index = function(ctx, next){
     console.log('overviewController.index triggered successfully');
-    $('#overview').show();
     $('#index').hide();
     $('#results').hide();
+    $('#overview').show();
 
     overviewContent.index();
+    console.log('overviewContent triggered successfully');
     ctx.handled = true;
     next();
   };
