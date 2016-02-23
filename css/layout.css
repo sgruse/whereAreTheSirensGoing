@@ -50,3 +50,10 @@ body {
 #search-form-no-autodetect{
   display: none;
 }
+
+.header-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 5%;
+}
