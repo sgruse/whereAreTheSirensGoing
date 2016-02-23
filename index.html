@@ -59,14 +59,17 @@
 
 
 
+    <div id="google-map"></div>
     <section id="results" class="results">
-        <div id="google-map"></div>
         <form id="filter">
-          <label><input type="checkbox" id="violent-crimes">Violent Crimes</label>
-          <label><input type="checkbox" id="non-violent">Non-Violent Crimes</label>
-          <label><input type="checkbox" id="sex-crimes">Sex Crimes</label>
-          <label><input type="checkbox" id="vehicle">Vehicle Crimes</label>
-          <label><input type="checkbox" id="quality">Quality of Life</label>
+          <label><input data-filterArrayIndex="1" class="type-filter" type="checkbox" id="violent-crimes" checked>Violent Crimes</label>
+          <label><input data-filterArrayIndex="2" class="type-filter" type="checkbox" id="non-violent" checked>Non-Violent Crimes</label>
+          <label><input data-filterArrayIndex="3" class="type-filter" type="checkbox" id="sex-crimes" checked>Sex Crimes</label>
+          <label><input data-filterArrayIndex="4" class="type-filter" type="checkbox" id="vehicle" checked>Vehicle Crimes</label>
+          <label><input data-filterArrayIndex="5" class="type-filter" type="checkbox" id="quality" checked>Quality of Life</label>
+          <label><input class="time-filter" type="checkbox" id="day" checked>Incidents today</label>
+          <label><input class="time-filter" type="checkbox" id="month" checked>Incidents this Month</label>
+          <label><input class="time-filter" type="checkbox" id="year" checked>Incidents this year</label>
         </form>
         <h2>INCIDENTS</h2>
         <ul id="results-handlebars-here" class="handlebars-goes-here"></ul>
@@ -75,7 +78,7 @@
 
 
     <section id="overview" class="overview">
-      <div id="google-map"></div>
+      <!-- <div id="google-map"></div> -->
       <h2>INCIDENTS</h2>
       <ul id="overview-handlebars-here" class="handlebars-goes-here"></ul>
     </section>
