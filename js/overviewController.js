@@ -27,5 +27,15 @@
     });
   };
 
+  overviewController.index = function(ctx, next){
+    $('#overview').show();
+    $('#index').hide();
+    $('.results').hide();
 
+    overviewContent.index();
+    ctx.handled = true;
+    next();
+  };
+
+  module.overviewController = overviewController;
 })(window);
