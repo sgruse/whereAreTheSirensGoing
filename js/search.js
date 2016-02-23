@@ -1,6 +1,6 @@
 (function(module){
   search = {};
-  $searchBar = $('#search-bar');//placeholder name, need to be updated to be consistent with index
+  // $searchBar = $('#search-bar');//placeholder name, need to be updated to be consistent with index
 
   search.getUserLocation = function(){
     console.log('search.getUserLocation called');
@@ -24,18 +24,20 @@
   };
 
   //this happens if we are denied permission to use their location, it's unavailable, or the request times out
-  //will need to run if geolocation has error or if geolocation not supported
+  //will run if geolocation has error or if geolocation not supported
   search.geolocationErrorCallback = function(){
     console.log('search.geolocationErrorCallback called');
     console.log('error in navigator.geolocation.getCurrentPosition');
-    search.makeSearchBarVisible();
-    search.attachSearchBarListener();
+    indexContent.showIndexSearchBar();
+    indexContent.attachIndexSearchBarListener();
+    // search.makeSearchBarVisible();
+    // search.attachSearchBarListener();
   };
 
   //this uses the google maps geocoding api to turn a search input into a LatLng pair, then it calls
-  search.processSearchBarInput = function(){
+  search.processSearchBarInput = function($searchBar){
     console.log('search.processSearchBarInput called');
-    var addressToSearch = $searchBar.value();
+    var addressToSearch = $searchBar.val();
     var formattedAddress =  addressToSearch;
     // var formattedAddress = addressToSearch.match() //not sure whether we will need to do any formatting of address or not
     maps.geocodeAddress(formattedAddress, function(results){
@@ -44,10 +46,10 @@
   };
 
   //this is used to bring up the form on the index page so that they can search instead of having auto location detection
-  search.makeSearchBarVisible = function(){
-    console.log('search.makeSearchBarVisible called');
-    $searchBar.css('display', 'block');
-  };
+  // search.makeSearchBarVisible = function(){
+  //   console.log('search.makeSearchBarVisible called');
+  //   $searchBar.css('display', 'block');
+  // };
 
   //make search bar do something when submitted
   search.attachSearchBarListener = function(){
@@ -68,7 +70,7 @@
         lat: results[0].geometry.location.lat(),
         lng: results[0].geometry.location.lng()
       };
-      console.log(output);
+      console.log('output object to encode in url is ' + output);
       return output;
     } else if (results instanceof Object){
       console.log('results was just an object, receiving location from navigator.geolocation');
@@ -76,7 +78,7 @@
         lat: results.coords.latitude,
         lng: results.coords.longitude
       };
-      console.log(output);
+      console.log('output object to encode in url is ' + output);
       return output;
     } else {
       console.log('critical error in formatSearchResults, unrecognized input format');
@@ -90,6 +92,7 @@
     for (var key in inputParametersObject){
       url += '$' + key + ':' + inputParametersObject[key];
     }
+    console.log('encoded url is');
     console.log(url);
     page(url);
   };

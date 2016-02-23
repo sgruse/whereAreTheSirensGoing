@@ -1,24 +1,28 @@
+<!DOCTYPE html>
 <html>
 
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> SIRENS!!! </title>
-    <link rel="stylesheet" type="text/css" href="vendor/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
-    <link rel="stylesheet" type="text/css" href="css/module.css">
-    <link rel="stylesheet" type="text/css" href="css/state.css">
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/css/module.css">
+    <link rel="stylesheet" type="text/css" href="/css/state.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
+
     <script id="incident-template" type="text/x-handlebars-template">
-      <article class="incidents">
       <li>
-        <ul id="incident-list">
-          <li>Type - {{initial_type_group}}</li>
-          <li>Subtype - {{initial_type_subgroup}}</li>
-          <li>Date/Time At Scene - {{at_scene_time}}</li>
-          <li>Location - {{hundred_block_location}}</li>
-        </ul>
+        <article class="incidents">
+          <ul id="incident-list">
+            <li>Type - {{initial_type_group}}</li>
+            <li>Subtype - {{initial_type_subgroup}}</li>
+            <li>Date/Time At Scene - {{at_scene_time}}</li>
+            <li>Location - {{hundred_block_location}}</li>
+          </ul>
+        </article>
       </li>
-      </article>
     </script>
   </head>
 
@@ -32,7 +36,7 @@
         </h1>
       </div>
       <div class="headerdiv"  id="search-bar">
-        <form>
+        <form class="address-search-form" id="navbar-address-search">
           <label>Search by Address</label>
           <input type="search">
         </form>
@@ -40,15 +44,20 @@
       <hr>
     </header>
 
+
+
     <section id="index" class="index">
-      <div id="buttoncontainer">
-        <form id="sirens-go">
-            <legend>Where are the Sirens?</legend>
-            <input type="text">
-            <button type="button">GO!</button>
+      <div id="index-form-container">
+        <button id="index-main-button" class="main-button">FIRST BUTTON find sirens placeholder text</button>
+        <form class="address-search-form" id="search-form-no-autodetect">
+            <legend>What is your street address?</legend>
+            <input type="search" id="main-address-input">
+            <input type="submit" value="find sirens placeholder text"></input>
         </form>
       </div>
     </section>
+
+
 
     <section id="results" class="results">
         <div id="google-map"></div>
@@ -56,33 +65,41 @@
         <ul id="incidents-handlebars-here"></ul>
     </section>
 
+
+
     <section id="overview" class="overview">
       <div id="google-map"></div>
       <h2>INCIDENTS</h2>
       <ul id="incidents-handlebars-here"></ul>
     </section>
 
+
+
+
     <footer>
       <hr>
       Footer
     </footer>
 
-    <script src="vendor/scripts/jquery-2.1.4.js"></script>
-    <script src="vendor/scripts/page.js"></script>
-    <script src="vendor/scripts/handlebars.js"></script>
-    <script src="/js/routes.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADH9R36RWhN3rKYB78NMpozp82r9Xd5ZY&signed_in=true"></script>
+    <script src="/vendor/scripts/jquery-2.1.4.js"></script>
+    <script src="/vendor/scripts/page.js"></script>
+    <script src="/vendor/scripts/handlebars.js"></script>
+
     <script src="/js/search.js"></script>
+    <script src="/js/maps.js"></script>
+    <script src="/js/incident.js"></script>
+    <script src="/js/dataFetcher.js"></script>
+
     <script src="/js/resultsController.js"></script>
     <script src="/js/resultsContent.js"></script>
     <script src="/js/overviewController.js"></script>
     <script src="/js/overviewContent.js"></script>
-    <script src="/js/maps.js"></script>
     <script src="/js/indexController.js"></script>
     <script src="/js/indexContent.js"></script>
-    <script src="/js/dataFetcher.js"></script>
     <script src="/js/aboutController.js"></script>
     <script src="/js/aboutContent.js"></script>
-    <script src="/js/incident.js"></script>
-  </body>
 
+    <script src="/js/routes.js"></script>
+  </body>
 </html>

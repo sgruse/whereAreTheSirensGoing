@@ -1,0 +1,15 @@
+{
+  "name": "Sirens",
+  "version": "1.0.0",
+  "description": "codefellows 301",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Gruse, Hugo Guerra, Frazier Mork, David Zalk",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express-request-proxy": "^1.0.10"
+  }
+}

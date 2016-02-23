@@ -48,11 +48,10 @@
   maps.geocodeAddress = function(addressToGeocode, callback) {
     console.log('maps.geocodeAddress called');
     console.log('addressToGeocode is ' + addressToGeocode);
-    maps.geocoder({'address': addressToGeocode}, function(results, status){
+    maps.geocoder.geocode({'address': addressToGeocode}, function(results, status){
       console.log('geocoder results', results);
       console.log('geocoder status', status);
       if (status === google.maps.GeocoderStatus.OK) {
-        console.log('geocoder status ok');
         console.log('geocoder results are');
         console.log(results);
         callback(results);

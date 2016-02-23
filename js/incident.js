@@ -13,6 +13,7 @@
     });
   };
 
+  //obsolete?
   Incident.fetchAll = function(callback) {
     //call to ajax fetch goes here. building skeleton function in the meantime
     if (rows.length) {
@@ -24,11 +25,11 @@
         rawData.forEach(function(item){
           var incident = new Incident(item);
         });
-        Incident.loadAll(rows)
+        Incident.loadAll(rows);
         callback();
       });
     };
   };
-  
+
   module.Incident = Incident;
 })(window);

@@ -8,24 +8,22 @@
 
   resultsContent = {};
 
-  var render = function(incident) {
-    var template = Handlebars.compile($('#incident-template').text());
+  // var render = function(incident) {
+  //   var template = Handlebars.compile($('#incident-template').text());
+  //
+  //   return template(incident);
+  // };
 
-    return template(incident);
-  };
-
-  resultsContent.index = function(incidents) {
-    $('#incidents-handlebars-here').show();
-    $('#index').hide();
-    $('#overview').hide();
-
-    incidents.forEach(function(a) {
-      $('#incidents-handlebars-here').append(render(a));
-    });
-
+  // resultsContent.index = function(incidents) {
+    // console.log('resultsContent.index called');
+    // $('#incidents-handlebars-here').show();
+    // $('#index').hide();
+    // $('#overview').hide();
+    // incidents.forEach(function(a) {
+    //   $('#incidents-handlebars-here').append(render(a));
+    // });
     //any filter handlers will need to go here
-
-  };
+  // };
 
   module.resultsContent = resultsContent;
 })(window);

@@ -30,7 +30,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 #sirens-go {
   display: flex;
@@ -47,4 +46,7 @@ body {
   width: 70%;
   height: 350px;
   border: solid 2px;
+}
+#search-form-no-autodetect{
+  display: none;
 }
