@@ -36,7 +36,7 @@
   overviewController.index = function(ctx, next){
     console.log('overviewController.index triggered successfully');
     $('#index').hide();
-    $('#results').hide();
+    // $('#results').hide();
     $('#overview').show();
 
     overviewContent.index();

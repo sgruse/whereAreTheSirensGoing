@@ -14,7 +14,6 @@
   overviewContent.index = function(){
     maps.buildMap([47.61, -122.34]);
     maps.addMarker([47.61, -122.34]);
-    maps.buildMap();
     console.log('overviewContent.index was called');
   };
 
