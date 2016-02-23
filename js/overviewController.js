@@ -1,8 +1,11 @@
 (function(module){
+
   overviewController = {};
+  var appToken = '0vBJ6JiStgBAfDkeAJf5h7645';
 
   //code below could be refactored, using dataFetcher to make the ajax call
-  overviewController.callBasicData = function() {
+  //ctx is causing problems
+  overviewController.callBasicData = function(ctx, next) {
 
     var latitude = 47.61;
     var longitude = -122.34;
