@@ -2,7 +2,12 @@
 
   var appToken = '0vBJ6JiStgBAfDkeAJf5h7645';
   var dataFetcher = {};
+  dataFetcher.filterArray = [['#violent-crimes', 'Violent Crimes', ['090', '091', '092', '040', '043', '049', '041', '026', '242', '249', '179', '010', '510', '291', '292', '330', '051', '052']],['#non-violent','Non-Violent Crimes',['050', '053', '160', '161']],['#sex-crimes','Sex Crimes',['020', '021', '141', '142']],['#vehicle','Auto Crimes',['071', '072', '074', '063', '061', '062']],['#quality','Quality of Life',['130', '139','174', '176', '177', '080', '081', '082', '083', '084', '085', '086', '087', '243', '244', '245', '246', '170', '171', '220', '221', '181', '182', '183', '184', '450', '150', '151', '152', '125', '127']]];
 
+  dataFetcher.handleFilters = function(allIncidents){
+
+  };
+  
   //need to refactor this so that the part that takes parameters is less clumsy
   dataFetcher.fetchData = function(ctx, next) {
     console.log('dataFetcher.fetchData called');

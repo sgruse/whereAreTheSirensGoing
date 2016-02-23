@@ -3,6 +3,7 @@
   maps.geocoder = new google.maps.Geocoder();
   maps.googleMapEl = document.getElementById('google-map'); //placeholder name, need to be updated to be consistent with index
   maps.googleMap;
+  maps.markerArray = [];
 
   $googleMap = $('#google-map');//not sure if we need this or not
 
@@ -19,12 +20,16 @@
       position: new google.maps.LatLng(markerPosition[0], markerPosition[1])
     });
     marker.setMap(maps.googleMap);
+    maps.markerArray.push(marker);
   };
 
   //needs to clear the map of all markers
   maps.clearMap = function(){
     console.log('maps.clearMap called');
-
+    maps.markerArray.forEach(function(current){
+      current.setMap(null);
+    });
+    maps.markerArray = [];
   };
 
   //takes the google map, centers it on the user, then draws the markers where they need to go
