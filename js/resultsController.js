@@ -2,6 +2,22 @@
   var resultsController = {};
   resultsController.searchParams; //maybe this is the best place to declare the initial general values for seattle? If that's the case though, they'll be overwritten as soon as a results call is made
 
+  resultsController.handleFilters = function() {
+    var checkedBoxIndex = []; $('#filter').find('.type-filter:checked').each(function(){
+      checkedBoxIndex.push($(this).attr('data-filterArrayIndex'));
+    });
+    console.log(checkedBoxIndex);
+    console.log(checkedBoxIndex instanceof Array);
+    checkedBoxIndex.map(function(current){
+      return dataFetcher.filterArray([current][2]).reduce(function(prev, current, index, array){
+        return prev.concat(current);  
+      },[]);
+    });
+    // dataFetcher.filterArray.filter(function(current, index, array){
+    //   return checkedBoxID.indexOf(replace )
+    // });
+
+  };
 
   //takes search parameters in from the navbar to set the value of resultsController.searchParams which is used as implicit argument for all functions from here on
   resultsController.detectParameters = function(ctx, next){
