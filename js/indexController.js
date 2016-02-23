@@ -1,10 +1,11 @@
 (function(module) {
   indexController = {};
   var $indexMainButton = $('#index-main-button');
-  
+
   indexController.index = function(){
     console.log('indexController.index called');
     $('#search-bar').hide();
+    $('#google-map').hide();
     $('.results').hide();
     $('.overview').hide();
 
