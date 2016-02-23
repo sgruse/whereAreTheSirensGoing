@@ -26,13 +26,20 @@
       }
     });
   };
-
+//Could be placed in overviewContent
   overviewController.index = function(ctx, next){
     $('#overview').show();
     $('#index').hide();
-    $('.results').hide();
+    $('#results').hide();
 
     overviewContent.index();
+    ctx.handled = true;
+    next();
+  };
+
+  overviewController.afterAjaxCall = function(ctx, next){
+    overviewContent.renderArticlesAndMapMarkers();
+
     ctx.handled = true;
     next();
   };
