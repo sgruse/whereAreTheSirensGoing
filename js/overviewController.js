@@ -6,6 +6,7 @@
   //code below could be refactored, using dataFetcher to make the ajax call
   //ctx is causing problems
   overviewController.callBasicData = function(ctx, next) {
+    console.log('call basic data triggered successfully');
 
     var latitude = 47.61;
     var longitude = -122.34;
@@ -31,6 +32,7 @@
   };
 //Could be placed in overviewContent
   overviewController.index = function(ctx, next){
+    console.log('overviewController.index triggered successfully');
     $('#overview').show();
     $('#index').hide();
     $('#results').hide();
@@ -41,6 +43,7 @@
   };
 
   overviewController.afterAjaxCall = function(ctx, next){
+    console.log('overviewController.afterAjaxcall triggered successfully');
     overviewContent.renderArticlesAndMapMarkers();
 
     ctx.handled = true;
