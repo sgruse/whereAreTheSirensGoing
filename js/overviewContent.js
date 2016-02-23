@@ -7,13 +7,17 @@
     return template(incident);
   };
 
+  var latitude1 = 47.61;
+  var longitude1 = -122.34;
+
 
   overviewContent.index = function(){
-    maps.buildMap([+overviewController.callBasicData.latitude, +overviewController.callBasicData.longitude]);
-    maps.addMarker([+overviewController.callBasicData.latitude, +overviewController.callBasicData.longitude]);
+    maps.buildMap([47.61, -122.34]);
+    maps.addMarker([47.61, -122.34]);
+    console.log('overviewContent.index was called');
   };
 
-  resultsContent.renderArticlesAndMapMarkers = function(incidents){
+  overviewContent.renderArticlesAndMapMarkers = function(incidents){
     console.log('resultsContent.renderArticlesAndMapMarkers called');
     Incident.all.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
