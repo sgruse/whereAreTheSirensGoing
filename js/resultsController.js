@@ -2,12 +2,15 @@
   var resultsController = {};
   resultsController.currentCodes = [];
   resultsController.searchParams; //maybe this is the best place to declare the initial general values for seattle? If that's the case though, they'll be overwritten as soon as a results call is made
+  resultsController.filterTime = 'today';
 
   //
   resultsController.handleFilters = function() {
     console.log('resultsController.handleFilters called');
     var checkedBoxIndex = [];
-    $('#filter').find('.type-filter:checked').each(function(){
+    var $filter = $('#filter');
+    resultsController.filterTime = $filter.find('.time-filter:checked').val();
+    $filter.find('.type-filter:checked').each(function(){
       checkedBoxIndex.push($(this).attr('data-filterArrayIndex'));
     });
     var policeCodesArray = checkedBoxIndex.map(function(current){
@@ -28,10 +31,32 @@
     console.log('resultsController.onFormChange called');
     resultsController.handleFilters();
     maps.clearMap(); //need to redraw marker for user position
+    var today = new Date();
+    var monthAgo = new Date(today.getTime() - 2592000000);
+    console.log(monthAgo);
+    today = today.getDate();
     $('#results-handlebars-here').empty();
     var filteredIncidants = Incident.all.filter(function(current, index, array){
       return resultsController.currentCodes.indexOf(current.event_clearance_code) !== -1;
+    }).filter(function(current, index, array){
+      if (resultsController.filterTime === 'today'){
+        if (current.event_clearance_date){
+          return today === new Date(current.event_clearance_date.replace('T', ' ')).getDate();
+        } else {
+          return false;
+        }
+      } else if (resultsController.filterTime === 'month'){
+        console.log('month radio button checked');
+        if (current.event_clearance_date){
+          return new Date(current.event_clearance_date.replace('T', ' ')) > monthAgo;
+        } else {
+          return false;
+        }
+      } else {
+        console.log('resultsController.filterTime has unrecognized format');
+      }
     });
+    console.log('filteredIncidants is ', filteredIncidants);
     filteredIncidants.forEach(function(thisIncident){
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));

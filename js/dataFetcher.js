@@ -9,7 +9,7 @@
     var latitude, longitude;
     var formattedUrl = 'https://data.seattle.gov/resource/pu5n-trf4.json';
     formattedUrl += '?&$order=event_clearance_date DESC';
-    var whereClause = "&$where=event_clearance_code not in ('NULL','008','009','010','011','012','013','014','015','016','017','018','019','020','021','022','023','024','025','026','027','311','312','313','314','390','391','030','031','032','033','034','035','036','040','050','341','342','343','344','345','346','320','321','322','323','324','347','510','520','271','273','274','275','371','372','373','470','481','465','415')";
+    var whereClause = "&$where=event_clearance_code in ('090', '091', '092', '040', '043', '049', '041', '026', '242', '249', '179', '010', '510', '291', '292', '330', '051', '052', '050', '053', '160', '161', '020', '021', '141', '142', '071', '072', '074', '063', '061', '062', '130', '139','174', '176', '177', '080', '081', '082', '083', '084', '085', '086', '087', '243', '244', '245', '246', '170', '171', '220', '221', '181', '182', '183', '184', '450', '150', '151', '152', '125', '127')";
     if (parameterObj.lat && parameterObj.lng){
       whereClause += 'AND within_circle(incident_location,'+ parameterObj.lat + ',' + parameterObj.lng + ',1000)'; //stretch goal: make the 10000 a variable passed in through the parameters so that it can be related to google maps zoom
     }

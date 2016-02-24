@@ -2,10 +2,10 @@
 
   overviewContent = {};
 
-  var template = Handlebars.compile($('#incident-template').text());
-  var render = function(incident){
-    return template(incident);
-  };
+  // var template = Handlebars.compile($('#incident-template').text());
+  // var render = function(incident){
+  //   return template(incident);
+  // };
 
   var latitude1 = 47.61;
   var longitude1 = -122.34;
@@ -21,7 +21,7 @@
     console.log('resultsContent.renderArticlesAndMapMarkers called');
     Incident.all.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
-      $('#overview-handlebars-here').append(render(thisIncident));
+      $('#overview-handlebars-here').append(resultsContent.render(thisIncident));
       // Talk about giving specific ID's, EX: Results Handlebars and Overview Handlebars.  Give both classes for styling.
     });
   };
