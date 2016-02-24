@@ -24,6 +24,19 @@
       $('#overview-handlebars-here').append(resultsContent.render(thisIncident));
       // Talk about giving specific ID's, EX: Results Handlebars and Overview Handlebars.  Give both classes for styling.
     });
+    $('#overview-handlebars-here li:nth-of-type(n+6)').hide();
+  };
+
+  $('#overviewReadOn').on('click', function(e){
+    event.preventDefault();
+    overviewContent.readOn();
+  });
+
+
+  overviewContent.readOn = function() {
+    $('#overview-handlebars-here li:nth-of-type(n+6)').show();
+    $('#overviewReadOn').hide();
+
   };
 
   module.overviewContent = overviewContent;
