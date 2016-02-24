@@ -26,7 +26,7 @@
           <ul class="incident-list">
             <li class="incident-list-item">Type - {{initial_type_group}}</li>
             <li class="incident-list-item">Subtype - {{initial_type_subgroup}}</li>
-            <li class="incident-list-item">Date/Time At Scene - {{at_scene_time}}</li>
+            <li class="incident-list-item">Date/Time At Scene - {{event_clearance_date}}</li>
             <li class="incident-list-item">Location - {{hundred_block_location}}</li>
           </ul>
         </article>
@@ -64,10 +64,8 @@
         </form>
       </div>
     </section>
-
-
     <h2 id="results-header" class="map-header">Incidents in <span class="sirens">your area</span></h2>
-    <h2 id="overview-header" class="map-header">All <span class="sirens">Seattle</span> Incidents</h2>
+    <h2 id="overview-header" class="map-header">Incidents in <span class="sirens">all of Seattle</span></h2>
     <div id="google-map"></div>
     <section id="results" class="results">
       <button id="show-filters">Filter Data</button>
@@ -79,7 +77,7 @@
           <label><input data-filterArrayIndex="5" class="type-filter" type="checkbox" id="quality">Quality of Life</label>
           <label><input class="time-filter" type="radio" name ="time-filter" id="day" value="today" checked>Incidents today</label>
           <label><input class="time-filter" type="radio" name ="time-filter" id="month" value="month">Incidents this Month</label>
-          <label><input class="time-filter" type="radio" name ="time-filter" id="year" value="year">Incidents this year</label>
+          <!-- <label><input class="time-filter" type="radio" name ="time-filter" id="year" value="year">Incidents this year</label> -->
         </form>
         <h2>INCIDENTS</h2>
         <ul id="results-handlebars-here" class="handlebars-goes-here"></ul>

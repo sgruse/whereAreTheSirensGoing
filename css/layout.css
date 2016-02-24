@@ -14,6 +14,10 @@ body {
   display: flex;
   justify-content: center;
 }
+
+#index-form-container {
+  padding-top: 5%;
+}
 #results {
   display: flex;
   justify-content: center;
@@ -93,7 +97,7 @@ header {
 }
 
 header h1 {
-  padding-left: 10%;
+  padding-left: 15%;
 }
 
 .sirens {
@@ -102,6 +106,7 @@ header h1 {
 }
 
 .container {
+  padding-top: 1%;
   position: absolute;
   top: 260px;
   left:0px;
