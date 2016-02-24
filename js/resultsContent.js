@@ -8,7 +8,7 @@
   resultsContent = {};
   var template = Handlebars.compile($('#incident-template').text());
 
-  resultsContent.render = function(incident) {
+  var render = function(incident) {
     return template(incident);
   };
 
@@ -25,10 +25,23 @@
     console.log('resultsContent.renderArticlesAndMapMarkers called');
     Incident.all.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
-      $('#results-handlebars-here').append(resultsContent.render(thisIncident));
+      $('#results-handlebars-here').append(render(thisIncident));
     });
+    $('<div/>', {
+      'id':'myDiv',
+      'class':'myClass',
+      'style':'cursor:pointer;font-weight:bold;',
+      'html':'<span id="readon">Display all Incidents >>></span>',
+      'click':function(){ resultsContent.readOn(); },
+      'mouseenter':function(){ $(this).css('color', 'red'); },
+      'mouseleave':function(){ $(this).css('color', 'black'); }
+    }).appendTo('.handlebars-goes-here');
+    $('#results-handlebars-here li:nth-of-type(n+6)').hide();
   };
-
+  resultsContent.readOn = function() {
+    $('#results-handlebars-here li:nth-of-type(n+6)').show();
+    $('#myDiv').hide();
+  };
 
 
   module.resultsContent = resultsContent;
