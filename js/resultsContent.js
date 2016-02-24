@@ -52,8 +52,7 @@
     // }).appendTo('.handlebars-goes-here');
   };
 
-
-  $('#readOn').on('click', function(e){
+  $('#resultsReadOn').on('click', function(e){
     event.preventDefault();
     resultsContent.readOn();
   });
@@ -61,7 +60,7 @@
 
   resultsContent.readOn = function() {
     $('#results-handlebars-here li:nth-of-type(n+6)').show();
-    $('#readOn').hide();
+    $('#resultsReadOn').hide();
 
   };
 
