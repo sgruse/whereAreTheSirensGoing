@@ -11,7 +11,7 @@
     formattedUrl += '?&$order=event_clearance_date DESC';
     var whereClause = "&$where=event_clearance_code not in ('NULL','008','009','010','011','012','013','014','015','016','017','018','019','020','021','022','023','024','025','026','027','311','312','313','314','390','391','030','031','032','033','034','035','036','040','050','341','342','343','344','345','346','320','321','322','323','324','347','510','520','271','273','274','275','371','372','373','470','481','465','415')";
     if (parameterObj.lat && parameterObj.lng){
-      whereClause += 'AND within_circle(incident_location,'+ parameterObj.lat + ',' + parameterObj.lng + ',10000)'; //stretch goal: make the 10000 a variable passed in through the parameters so that it can be related to google maps zoom
+      whereClause += 'AND within_circle(incident_location,'+ parameterObj.lat + ',' + parameterObj.lng + ',1000)'; //stretch goal: make the 10000 a variable passed in through the parameters so that it can be related to google maps zoom
     }
     if (additionalWhere){
       whereClause += 'AND ' + additionalWhere;
