@@ -45,6 +45,7 @@
 
   //applies regular expression to the url to build the resultsController.searchParams object
   resultsController.pullPropertiesFromUrl = function(ctx){
+    console.log('resultsController.pullPropertiesFromUrl  called');
     return ctx.params.parameters.match(/(\$[^\$\s]+:[^\$\s]+)/g).reduce(function(acc, current){
       var terms = current.replace('$', '').split(':');
       console.log('terms are ', terms);
@@ -59,10 +60,24 @@
     $('.results').show();
     $('#index').hide();
     $('#overview').hide();
+    $('#google-map').show();
     resultsContent.index();
     $('#filter').on('change', resultsController.onFormChange);
     ctx.handled = true;
     next();
+  };
+
+  //need to refactor this so that the part that takes parameters is less clumsy
+  resultsController.fetchData = function(ctx, next) {
+    console.log('resultsController.fetchData  called');
+    var formattedApiUrl = dataFetcher.formatUrlForApi(resultsController.searchParams);
+    dataFetcher.makeAjaxCall(formattedApiUrl, function(data){
+      if (data){
+        dataFetcher.parseData(data);
+      }
+      ctx.handled = true;
+      next();
+    });
   };
 
   //this handles everything that still needs to happen after the ajax call to the police/fire api finishes

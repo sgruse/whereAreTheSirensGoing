@@ -23,7 +23,7 @@
     <script id="incident-template" type="text/x-handlebars-template">
       <li>
         <article class="incidents">
-          <ul id="incident-list">
+          <ul class="incident-list">
             <li>Type - {{initial_type_group}}</li>
             <li>Subtype - {{initial_type_subgroup}}</li>
             <li>Date/Time At Scene - {{at_scene_time}}</li>
@@ -70,14 +70,14 @@
     <div id="google-map"></div>
     <section id="results" class="results">
         <form id="filter">
-          <label><input data-filterArrayIndex="1" class="type-filter" type="checkbox" id="violent-crimes" checked>Violent Crimes</label>
-          <label><input data-filterArrayIndex="2" class="type-filter" type="checkbox" id="non-violent" checked>Non-Violent Crimes</label>
-          <label><input data-filterArrayIndex="3" class="type-filter" type="checkbox" id="sex-crimes" checked>Sex Crimes</label>
-          <label><input data-filterArrayIndex="4" class="type-filter" type="checkbox" id="vehicle" checked>Vehicle Crimes</label>
-          <label><input data-filterArrayIndex="5" class="type-filter" type="checkbox" id="quality" checked>Quality of Life</label>
-          <label><input class="time-filter" type="checkbox" id="day" checked>Incidents today</label>
-          <label><input class="time-filter" type="checkbox" id="month" checked>Incidents this Month</label>
-          <label><input class="time-filter" type="checkbox" id="year" checked>Incidents this year</label>
+          <label><input data-filterArrayIndex="1" class="type-filter" type="checkbox" id="violent-crimes">Violent Crimes</label>
+          <label><input data-filterArrayIndex="2" class="type-filter" type="checkbox" id="non-violent">Non-Violent Crimes</label>
+          <label><input data-filterArrayIndex="3" class="type-filter" type="checkbox" id="sex-crimes">Sex Crimes</label>
+          <label><input data-filterArrayIndex="4" class="type-filter" type="checkbox" id="vehicle">Vehicle Crimes</label>
+          <label><input data-filterArrayIndex="5" class="type-filter" type="checkbox" id="quality">Quality of Life</label>
+          <label><input class="time-filter" type="checkbox" id="day">Incidents today</label>
+          <label><input class="time-filter" type="checkbox" id="month">Incidents this Month</label>
+          <label><input class="time-filter" type="checkbox" id="year">Incidents this year</label>
         </form>
         <h2>INCIDENTS</h2>
         <ul id="results-handlebars-here" class="handlebars-goes-here"></ul>
