@@ -92,6 +92,15 @@ header {
 
 }
 
+header h1 {
+  padding-left: 10%;
+}
+
+.sirens {
+  color: #2281E5;
+  font-weight: bold;
+}
+
 .container {
   position: absolute;
   top: 260px;
