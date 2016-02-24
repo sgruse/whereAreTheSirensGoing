@@ -3,25 +3,31 @@
   resultsController.currentCodes = [];
   resultsController.searchParams; //maybe this is the best place to declare the initial general values for seattle? If that's the case though, they'll be overwritten as soon as a results call is made
 
+  //
   resultsController.handleFilters = function() {
-    var checkedBoxIndex = []; $('#filter').find('.type-filter:checked').each(function(){
+    console.log('resultsController.handleFilters called');
+    var checkedBoxIndex = [];
+    $('#filter').find('.type-filter:checked').each(function(){
       checkedBoxIndex.push($(this).attr('data-filterArrayIndex'));
     });
-    var checkedMap = checkedBoxIndex.map(function(current){
-      return dataFetcher.filterArray[current-1][2];
+    var policeCodesArray = checkedBoxIndex.map(function(current){
+      return dataFetcher.filterArray[current-1][2]; //switch to 0-4 on index
     });
-    var reducedMap = checkedMap.reduce(function(prev, current, index, array){
+    var flattenedPoliceCodesArray = policeCodesArray.reduce(function(prev, current, index, array){
       return prev.concat(current);
     },[]);
-    console.log(reducedMap);
-    resultsController.currentCodes = reducedMap;
+    console.log(flattenedPoliceCodesArray);
+    resultsController.currentCodes = flattenedPoliceCodesArray;
     // dataFetcher.filterArray.filter(function(current, index, array){
     //   return checkedBoxID.indexOf(replace )
     // });
   };
+
+  //runs whenever the filters form below the map is changed
   resultsController.onFormChange = function() {
+    console.log('resultsController.onFormChange called');
     resultsController.handleFilters();
-    maps.clearMap();
+    maps.clearMap(); //need to redraw marker for user position
     $('#results-handlebars-here').empty();
     var filteredIncidants = Incident.all.filter(function(current, index, array){
       return resultsController.currentCodes.indexOf(current.event_clearance_code) !== -1;
