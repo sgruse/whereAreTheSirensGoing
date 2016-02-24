@@ -10,6 +10,8 @@
     $('#google-map').hide();
     $('.results').hide();
     $('.overview').hide();
+    $('#results-header').hide();
+    $('#overview-header').hide();
 
     $indexMainButton.on('click', function(event){
       $indexMainButton.hide();
