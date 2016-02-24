@@ -31,26 +31,38 @@
         return false;
       }
     });
+
+
     filteredIncidents.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));
     });
 
-    $('<div/>', {
-      'id':'myDiv',
-      'class':'myClass',
-      'style':'cursor:pointer;font-weight:bold;',
-      'html':'<span id="readon">Display all Incidents >>></span>',
-      'click':function(){ resultsContent.readOn(); },
-      'mouseenter':function(){ $(this).css('color', 'red'); },
-      'mouseleave':function(){ $(this).css('color', 'black'); }
-    }).appendTo('.handlebars-goes-here');
     $('#results-handlebars-here li:nth-of-type(n+6)').hide();
+
+
+    // $('<div/>', {
+    //   'id':'myDiv',
+    //   'class':'myClass',
+    //   'style':'cursor:pointer;font-weight:bold;',
+    //   'html':'<span id="readon">Display all Incidents >>></span>',
+    //   'click':function(){ resultsContent.readOn(); },
+    //   'mouseenter':function(){ $(this).css('color', 'red'); },
+    //   'mouseleave':function(){ $(this).css('color', 'black'); }
+    // }).appendTo('.handlebars-goes-here');
   };
+
+
+  $('#readOn').on('click', function(e){
+    event.preventDefault();
+    resultsContent.readOn();
+  });
+
 
   resultsContent.readOn = function() {
     $('#results-handlebars-here li:nth-of-type(n+6)').show();
-    $('#myDiv').hide();
+    $('#readOn').hide();
+
   };
 
 
