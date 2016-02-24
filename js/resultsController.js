@@ -67,6 +67,7 @@
     $('#index').hide();
     $('#overview').hide();
     $('#google-map').show();
+    $('#overview-header').hide();
     $('#show-filters').on('click', resultsController.showFilters);
     resultsContent.index();
     $('#filter').on('change', resultsController.onFormChange);

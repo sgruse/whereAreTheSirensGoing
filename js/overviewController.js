@@ -21,6 +21,7 @@
     console.log('overviewController.index triggered successfully');
     $('#index').hide();
     $('#results').hide();
+    $('#results-header').hide();
     $('#overview').show();
 
     overviewContent.index();
