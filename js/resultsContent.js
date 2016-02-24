@@ -8,7 +8,7 @@
   resultsContent = {};
   var template = Handlebars.compile($('#incident-template').text());
 
-  var render = function(incident) {
+  resultsContent.render = function(incident) {
     return template(incident);
   };
 
@@ -23,10 +23,19 @@
 
   resultsContent.renderArticlesAndMapMarkers = function(incidents){
     console.log('resultsContent.renderArticlesAndMapMarkers called');
-    Incident.all.forEach(function(thisIncident) {
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
-      $('#results-handlebars-here').append(render(thisIncident));
+    var today = new Date().getDate();
+    var filteredIncidents = Incident.all.filter(function(current){
+      if (current.event_clearance_date){
+        return today === new Date(current.event_clearance_date.replace('T', ' ')).getDate();
+      } else {
+        return false;
+      }
     });
+    filteredIncidents.forEach(function(thisIncident) {
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      $('#results-handlebars-here').append(resultsContent.render(thisIncident));
+    });
+
     $('<div/>', {
       'id':'myDiv',
       'class':'myClass',
@@ -38,6 +47,7 @@
     }).appendTo('.handlebars-goes-here');
     $('#results-handlebars-here li:nth-of-type(n+6)').hide();
   };
+
   resultsContent.readOn = function() {
     $('#results-handlebars-here li:nth-of-type(n+6)').show();
     $('#myDiv').hide();
