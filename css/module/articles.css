@@ -1,8 +1,11 @@
 .incident-list {
   font-family: raleway;
-  font-weight: bold;
+  font-weight:bold;
+  color: black;
   background-color: grey;
   margin: 5%;
   opacity: 0.6;
-  text-align: center;
+  box-shadow: 10px 10px 5px #534949;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
