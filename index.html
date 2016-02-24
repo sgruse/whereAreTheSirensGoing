@@ -37,10 +37,10 @@
   <body>
     <header>
       <div class="headerdiv" id="headersirens">
-        <h1>Follow the Sirens...
-          <span class="index">--index</span>
+        <h1>Where Are The Sirens Going? <br>
+          <!-- <span class="index">--index</span>
           <span class="results">--results</span>
-          <span class="overview">--overview</span>
+          <span class="overview">--overview</span> -->
         </h1>
       </div>
       <div class="headerdiv"  id="search-bar">
@@ -56,17 +56,20 @@
 
     <section id="index" class="index">
       <div id="index-form-container">
-        <button id="index-main-button" class="main-button">FIRST BUTTON find sirens placeholder text</button>
+        <button id="index-main-button" class="main-button">Detect your location</button>
+        <button id="index-search-button" class="search-button">Address Search</button>
+        <button id="index-overview-button" class="overview-button">City Overview</button>
         <form class="address-search-form" id="search-form-no-autodetect">
             <legend>What is your street address?</legend>
             <input type="search" id="main-address-input">
-            <input type="submit" value="find sirens placeholder text"></input>
+            <input type="submit" value="find the sirens"></input>
         </form>
       </div>
     </section>
 
 
-
+    <h2 id="results-header" class="map-header">Incidents in your area</h2>
+    <h2 id="overview-header" class="map-header">All Seattle Incidents</h2>
     <div id="google-map"></div>
     <section id="results" class="results">
       <button id="show-filters">Filter Data</button>
