@@ -12,7 +12,6 @@
     $('.overview').hide();
 
     $indexMainButton.on('click', function(event){
-      // event.preventDefault();
       $indexMainButton.hide();
       search.getUserLocation();
     });
