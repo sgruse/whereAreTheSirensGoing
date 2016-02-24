@@ -7,29 +7,13 @@
   //ctx is causing problems
   overviewController.callBasicData = function(ctx, next) {
     console.log('call basic data triggered successfully');
-
-    var latitude = 47.61;
-    var longitude = -122.34;
-
-    $.ajax({
-      url: 'https://data.seattle.gov/resource/3k2p-39jp.json'
-          + '?$order=event_clearance_date DESC',
-          // + 'where=within_circle(incident_location,' + latitude + ',' + longitude + ',10000)',
-      type: 'GET',
-      ContentType: 'json',
-      headers: { 'X-App-Token': appToken },
-      success: function(data, message, xhr) {
+    var formattedApiUrl = dataFetcher.formatUrlForApi({});
+    dataFetcher.makeAjaxCall(formattedApiUrl, function(data){
+      if (data){
         dataFetcher.parseData(data);
-        console.log(data);
-        ctx.handled = true;
-        console.log(ctx);
-        next();
-      },
-      error: function(){
-        console.log('error in processing overviewController.callBasicData data');
-        ctx.handled = true;
-        next();
       }
+      ctx.handled = true;
+      next();
     });
   };
 //Could be placed in overviewContent

@@ -33,10 +33,9 @@
         console.log(message);
         console.log('xhr is ', xhr);
         console.log('data is', data);
-
         // console.log(data.length);
-        dataFetcher.parseData(data);
-        callback();
+        // dataFetcher.parseData(data);
+        callback(data);
       },
       error: function(){
         console.log('error receiveing data');
