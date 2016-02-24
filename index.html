@@ -40,16 +40,18 @@
         <h1>Where Are The Sirens Going?</h1>
       </div>
       <div class="headerdiv"  id="search-bar">
+        <ul id="nav-bar" class="nav-bar">
+          <li><a href="/">Home</a></li>
+          <li><a href="/overview">City Overview</a></li>
+        </ul>
         <form class="address-search-form" id="navbar-address-search">
-          <label>Search by Address</label>
-          <input type="search">
+          <label for="search">Search by Address</label><input id"search" type="search">
         </form>
       </div>
-      <hr>
     </header>
 
 
-
+    <div class="container">
     <section id="index" class="index">
       <div id="index-form-container">
         <button id="index-main-button" class="main-button">Detect your location</button>
@@ -98,6 +100,7 @@
       <hr>
       Footer
     </footer>
+  </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADH9R36RWhN3rKYB78NMpozp82r9Xd5ZY&signed_in=true"></script>
     <script src="/vendor/scripts/jquery-2.1.4.js"></script>
