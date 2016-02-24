@@ -61,6 +61,7 @@
     $('#index').hide();
     $('#overview').hide();
     $('#google-map').show();
+    $('#show-filters').on('click', resultsController.showFilters);
     resultsContent.index();
     $('#filter').on('change', resultsController.onFormChange);
     ctx.handled = true;
@@ -78,6 +79,10 @@
       ctx.handled = true;
       next();
     });
+  };
+
+  resultsController.showFilters = function(){
+    $('#filter').slideToggle();
   };
 
   //this handles everything that still needs to happen after the ajax call to the police/fire api finishes
