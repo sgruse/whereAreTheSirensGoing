@@ -1,3 +1,11 @@
 #filter {
   display: none;
 }
+
+#show-filters {
+  margin: 8px;
+}
+
+label {
+  padding: 4px;
+}

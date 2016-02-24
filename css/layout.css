@@ -3,7 +3,8 @@ body {
 }
 #headersirens {
   display: flex;
-  justify-content: flex-start;
+  /*justify-content: flex-start;*/
+  justify-content: center;
 }
 #search-bar {
   display: flex;
@@ -93,13 +94,18 @@ header {
   position: fixed;
   background-color: white;
   z-index: 1;
-  height: 260px;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 20%;
   padding-bottom: 1%;
 
 }
 
 header h1 {
-  padding-left: 15%;
+  margin: 0px;
+  margin-top: 2%;
+  max-width: 100%;
 }
 
 .sirens {
@@ -108,11 +114,7 @@ header h1 {
 }
 
 .container {
+  margin-top: 20%;
   padding-top: 1%;
-  position: absolute;
-  top: 260px;
-  left:0px;
-  right:0px;
-  bottom:0px;
-  overflow-y:scroll;
+  overflow-y: auto;
 }
