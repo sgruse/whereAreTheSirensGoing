@@ -76,9 +76,9 @@
           <label><input data-filterArrayIndex="3" class="type-filter" type="checkbox" id="sex-crimes">Sex Crimes</label>
           <label><input data-filterArrayIndex="4" class="type-filter" type="checkbox" id="vehicle">Vehicle Crimes</label>
           <label><input data-filterArrayIndex="5" class="type-filter" type="checkbox" id="quality">Quality of Life</label>
-          <label><input class="time-filter" type="checkbox" id="day">Incidents today</label>
-          <label><input class="time-filter" type="checkbox" id="month">Incidents this Month</label>
-          <label><input class="time-filter" type="checkbox" id="year">Incidents this year</label>
+          <label><input class="time-filter" type="radio" name ="time-filter" id="day" value="today">Incidents today</label>
+          <label><input class="time-filter" type="radio" name ="time-filter" id="month" value="month">Incidents this Month</label>
+          <label><input class="time-filter" type="radio" name ="time-filter" id="year" value="year">Incidents this year</label>
         </form>
         <h2>INCIDENTS</h2>
         <ul id="results-handlebars-here" class="handlebars-goes-here"></ul>
