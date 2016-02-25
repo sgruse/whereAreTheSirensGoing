@@ -6,6 +6,7 @@
 
   indexController.index = function(){
     console.log('indexController.index called');
+    $('body').css('background-color', 'black');
     $('header').css('border', 'none');
     $('#map-holder').hide();
     $('.results').hide();

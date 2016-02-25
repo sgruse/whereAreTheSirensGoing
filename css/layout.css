@@ -54,10 +54,13 @@
   width: 90%;
 }
 #search-form-no-autodetect{
+  max-width: 400px;
   margin-top: .5em;
   display: none;
   width: 90%;
 }
+
+
 
 /*#results {
   display: flex;
@@ -132,6 +135,11 @@
 .text-align-center{
   text-align: center;
 }
+.justify-space-around{
+  display: flex;
+  justify-content: space-around;
+}
+
 .float-left{
   float:left;
 }

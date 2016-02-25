@@ -88,7 +88,9 @@
   //will need to be redoce so it works whether you are coming initially from the index page/loading this url for the first time OR coming from results or overview already where the google map already exists
   resultsController.index = function(ctx, next){
     console.log('resultsController.index called');
+    $('body').css('background-color', 'white');
     $('.results').show();
+    $('#results-header').show();
     $('#index').hide();
     $('#overview').hide();
     $('#map-holder').show();
