@@ -15,7 +15,8 @@ ul {
   list-style-type: none;
 }
 .incident-list-item {
-  list-style-type: square;
+  margin-left: 2em;
+  /*list-style-type: square;*/
 }
 li {
   /*list-style-type: none;*/
@@ -23,4 +24,7 @@ li {
 }
 
 .handlebars-goes-here {
+  width: 90%;
+  padding: 0px;
+  margin: 0px;
 }

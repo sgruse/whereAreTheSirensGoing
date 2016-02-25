@@ -1,12 +1,14 @@
 .incident-list {
+  list-style-type: none;
   font-family: raleway;
   font-weight:bold;
   color: black;
   background-color: grey;
-  margin: 5%;
+  /*margin: 5%;*/
   width: 100%;
   opacity: 0.6;
-  box-shadow: 10px 10px 5px #534949;
+  box-shadow: 3px 3px 3px #534949;
+  padding: 0;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -26,4 +28,9 @@
 
 .readOn a:hover {
   color: red;
+}
+
+.incidents {
+  padding-bottom: 5%;
+  /*width: 60%;*/
 }

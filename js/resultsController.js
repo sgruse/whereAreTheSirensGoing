@@ -91,7 +91,7 @@
     $('.results').show();
     $('#index').hide();
     $('#overview').hide();
-    $('#google-map').show();
+    $('#map-holder').show();
     $('#overview-header').hide();
     $('#show-filters').on('click', resultsController.showFilters);
     resultsContent.index();

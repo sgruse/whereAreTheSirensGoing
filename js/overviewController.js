@@ -23,6 +23,7 @@
     $('#results').hide();
     $('#results-header').hide();
     $('#overview').show();
+    $('#map-holder').show();
 
     overviewContent.index();
     console.log('overviewContent triggered successfully');
