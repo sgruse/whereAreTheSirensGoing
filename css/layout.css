@@ -1,6 +1,4 @@
-body {
-  margin:10px 10px 10px 10px;
-}
+
 #headersirens {
   display: flex;
   /*justify-content: flex-start;*/
@@ -40,11 +38,6 @@ body {
   align-items: center;
 }
 
-#google-map {
-  width: 90%;
-  height: 350px;
-  border: solid 2px;
-}
 
 #search-form-no-autodetect{
   display: none;
@@ -84,19 +77,20 @@ header {
   border-bottom: 1px solid black;
   box-shadow: 1px 1px 1px #534949;
   width:100%;
-  position: fixed;
   background-color: white;
-  z-index: 1;
+  /*position: fixed;*/
+  /*z-index: 1;
   left: 0;
   right: 0;
-  top: 0;
-  height: 20%;
+  top: 0;*/
+  /*height: 20%;*/
   padding-bottom: 1%;
 
 }
 
 header h1 {
   margin: 0px;
+  margin-left: 5%;
   margin-top: 2%;
   max-width: 100%;
 }
@@ -107,7 +101,14 @@ header h1 {
 }
 
 main {
-  margin-top: 20%;
+  margin-top: 5%;
   padding-top: 1%;
   overflow-y: auto;
+}
+
+.full-width{
+  width: 100%;
+}
+.text-align-center{
+  text-align: center;
 }
