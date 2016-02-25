@@ -6,8 +6,7 @@
 
   indexController.index = function(){
     console.log('indexController.index called');
-    $('#search-bar').hide();
-    $('#google-map').hide();
+    $('#map-holder').hide();
     $('.results').hide();
     $('.overview').hide();
     $('#results-header').hide();

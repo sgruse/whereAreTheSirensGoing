@@ -9,9 +9,6 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto|Raleway:200' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/css/base.css">
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="/css/module.css">
-    <link rel="stylesheet" type="text/css" href="/css/state.css">
-    <link rel="stylesheet" type="text/css" href="/css/theme.css">
     <link rel="stylesheet" type="text/css" href="/css/module/articles.css">
     <link rel="stylesheet" type="text/css" href="/css/module/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/module/index.css">
@@ -19,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="/css/module/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/module/overview.css">
     <link rel="stylesheet" type="text/css" href="/css/module/results.css">
+    <link rel="stylesheet" type="text/css" href="/css/state.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
 
     <script id="incident-template" type="text/x-handlebars-template">
       <li>
@@ -35,40 +34,47 @@
   </head>
 
   <body>
+
     <header>
       <div class="headerdiv" id="headersirens">
         <h1>Where Are <span class="sirens">The Sirens</span> Going?</h1>
       </div>
-      <div class="headerdiv"  id="search-bar">
-        <ul id="nav-bar" class="nav-bar">
-          <li><a href="/">Home</a></li>
-          <li><a href="/overview">City Overview</a></li>
-        </ul>
-        <form class="address-search-form" id="navbar-address-search">
-          <label for="search">Search by Address:</label><input id"search" type="search">
-        </form>
-      </div>
+      <!-- <div class="headerdiv"  id="search-bar"> -->
+        <!-- <ul id="nav-bar" class="nav-bar"> -->
+          <!-- <li><a href="/">Home</a></li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
     </header>
 
 
-    <div class="container">
-    <section id="index" class="index">
-      <div id="index-form-container">
-        <button id="index-main-button" class="main-button">Detect your location</button>
-        <button id="index-search-button" class="search-button">Address Search</button>
-        <button id="index-overview-button" class="overview-button">City Overview</button>
-        <form class="address-search-form" id="search-form-no-autodetect">
+    <main>
+
+      <section id="index" class="index">
+        <div id="index-form-container">
+          <button id="index-main-button" class="main-button">Detect your location</button>
+          <button id="index-search-button" class="search-button">Address Search</button>
+          <button id="index-overview-button" class="overview-button">City Overview</button>
+          <form class="address-search-form" id="search-form-no-autodetect">
             <legend>What is your street address?</legend>
-            <input type="search" id="main-address-input">
+            <input type="search" id="main-address-input"></input>
             <input type="submit" value="find the sirens"></input>
+          </form>
+        </div>
+      </section>
+
+      <div id="map-holder" class="map-holder">
+        <a href="/overview">City Overview</a>
+        <form class="address-search-form" id="navbar-address-search">
+          <input class="search" id="search" type="search" placeholder="Search by address:">
         </form>
+        <div id="google-map"></div>
+        <h2 id="results-header" class="map-header">Incidents in <span class="sirens">your area</span></h2>
+        <h2 id="overview-header" class="map-header">Incidents in <span class="sirens">all of Seattle</span></h2>
       </div>
-    </section>
-    <h2 id="results-header" class="map-header">Incidents in <span class="sirens">your area</span></h2>
-    <h2 id="overview-header" class="map-header">Incidents in <span class="sirens">all of Seattle</span></h2>
-    <div id="google-map"></div>
-    <section id="results" class="results">
-      <button id="show-filters">Filter Data</button>
+
+
+      <section id="results" class="results main-content">
+        <button id="show-filters">Filter Data</button>
         <form id="filter">
           <label><input data-filterArrayIndex="1" class="type-filter" type="checkbox" id="violent-crimes" checked>Violent Crimes</label>
           <label><input data-filterArrayIndex="2" class="type-filter" type="checkbox" id="non-violent" checked>Non-Violent Crimes</label>
@@ -79,29 +85,27 @@
           <label><input class="time-filter" type="radio" name ="time-filter" id="month" value="month">Incidents this Month</label>
           <!-- <label><input class="time-filter" type="radio" name ="time-filter" id="year" value="year">Incidents this year</label> -->
         </form>
-        <h2>INCIDENTS</h2>
+        <!-- <h2>INCIDENTS</h2> -->
         <ul id="results-handlebars-here" class="handlebars-goes-here"></ul>
         <section id="resultsReadOn" class="readOn"><a href="#">Display All Incidents >>></a></section>
-
-    </section>
-
-
-
-    <section id="overview" class="overview">
-      <!-- <div id="google-map"></div> -->
-      <h2>INCIDENTS</h2>
-      <ul id="overview-handlebars-here" class="handlebars-goes-here"></ul>
-      <section id="overviewReadOn" class="readOn"><a href="#">Display All Incidents >>></a></section>
-    </section>
+      </section>
 
 
 
+      <section id="overview" class="overview main-content">
+        <!-- <div id="google-map"></div> -->
+        <!-- <h2>INCIDENTS</h2> -->
+        <ul id="overview-handlebars-here" class="handlebars-goes-here"></ul>
+        <section id="overviewReadOn" class="readOn"><a href="#">Display All Incidents >>></a></section>
+      </section>
 
-    <footer>
-      <hr>
-      Footer
-    </footer>
-  </div>
+
+      <footer>
+        <hr>
+        Footer
+      </footer>
+
+  </main>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADH9R36RWhN3rKYB78NMpozp82r9Xd5ZY&signed_in=true"></script>
     <script src="/vendor/scripts/jquery-2.1.4.js"></script>
