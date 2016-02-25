@@ -1,4 +1,21 @@
+.map-holder{
+  /*outline: 1px red solid;*/
+  width: 90%;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  position: relative;
+}
+
+.map-holder a{
+  text-align: left;
+  margin-left: 4px;
+}
+
 #google-map {
+  width: 100%;
+  height: 350px;
+  outline: solid 2px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -6,11 +23,11 @@
 .search{
   width: 100%;
 }
+
 #navbar-address-search{
   display: inline-block;
   width: 70%;
   float: right;
-  padding-right: 5px;
-  margin-right: 5%;
+  margin-right: 4px;
   margin-bottom: .5em;
 }

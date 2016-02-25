@@ -93,6 +93,7 @@
     $('#overview').hide();
     $('#map-holder').show();
     $('#overview-header').hide();
+    $('header').css('border-bottom', '1px black solid');
     $('#show-filters').on('click', resultsController.showFilters);
     resultsContent.index();
     $('#filter').on('change', resultsController.onFormChange);

@@ -4,7 +4,8 @@
 
 h1 {
   font-family: roboto;
-  font-size: 4.236em;
+  font-size: 2.168em;
+  /*font-size: 4.236em;*/
 }
 
 h2 {
@@ -24,7 +25,45 @@ li {
 }
 
 .handlebars-goes-here {
+  margin-top: 2%;
   width: 90%;
   padding: 0px;
   margin: 0px;
+}
+
+footer {
+  display: none;
+}
+
+body {
+  background-color: black;
+}
+
+main {
+  /*margin-top: 5%;*/
+  /*padding-top: 1%;*/
+  overflow-y: auto;
+  background-color: white;
+}
+
+header {
+  /*border-bottom: 1px solid black;*/
+  box-shadow: 1px 1px 1px black;
+  width: 100%;
+  background-color: white;
+  /*position: fixed;*/
+  /*z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;*/
+  /*height: 20%;*/
+  padding-bottom: 1%;
+
+}
+
+header h1 {
+  margin: 0px;
+  margin-left: 5%;
+  margin-top: 2%;
+  max-width: 100%;
 }
