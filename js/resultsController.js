@@ -59,6 +59,8 @@
     console.log('filteredIncidants is ', filteredIncidants);
     filteredIncidants.forEach(function(thisIncident){
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      resultsContent.infoDate = thisIncident.event_clearance_date.slice(0,10);
+      resultsContent.infoTitle = thisIncident.event_clearance_description;
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));
     });
   };

@@ -5,12 +5,15 @@
 // VIEW - will compile handlebars,
 
 (function(module){
+
   resultsContent = {};
   var template = Handlebars.compile($('#incident-template').text());
 
   resultsContent.render = function(incident) {
     return template(incident);
   };
+  resultsContent.infoTitle = {};
+  resultsContent.infoDate = {};
 
   //this needs to do anything to draw the results page that happens before the police AJAX call comes back
   //notably, this needs to draw the google map centered at the user's position
@@ -35,6 +38,8 @@
 
     filteredIncidents.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      resultsContent.infoDate = thisIncident.event_clearance_date.slice(0,10);
+      resultsContent.infoTitle = thisIncident.event_clearance_description;
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));
     });
 

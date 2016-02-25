@@ -17,9 +17,16 @@
   maps.addMarker = function(markerPosition){
     console.log('maps.addMarker called');
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(markerPosition[0], markerPosition[1])
+      position: new google.maps.LatLng(markerPosition[0], markerPosition[1]),
+      map: maps.googleMap
     });
-    marker.setMap(maps.googleMap);
+    var infoWindow = new google.maps.InfoWindow({
+      content: resultsContent.infoTitle + '</br>' + resultsContent.infoDate
+    });
+
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.open(maps.googleMap, marker);
+    });
     maps.markerArray.push(marker);
   };
 
@@ -31,7 +38,7 @@
     });
     maps.markerArray = [];
   };
-
+0
   //takes the google map, centers it on the user, then draws the markers where they need to go
   //centerPosition must be of type [lat, lng]
   //I feel like the else section should be handled elsewhere--that is, if there is no center postion, resultsController.searchParams should be set to the values listed there--it probably shouldn't be handled here
