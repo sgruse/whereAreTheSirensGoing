@@ -23,6 +23,7 @@
     $('#index').hide();
     $('#results').hide();
     $('#results-header').hide();
+    $('#overview-header').show();
     $('#overview').show();
     $('#map-holder').show();
 

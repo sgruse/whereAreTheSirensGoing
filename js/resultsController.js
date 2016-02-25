@@ -89,6 +89,7 @@
   resultsController.index = function(ctx, next){
     console.log('resultsController.index called');
     $('.results').show();
+    $('#results-header').show();
     $('#index').hide();
     $('#overview').hide();
     $('#map-holder').show();

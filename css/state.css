@@ -1,3 +1,14 @@
+@media only screen and (min-width: 500px) {
+  #index-form-container > li > button{
+    max-width: 400px;
+  }
+  #main-address-input{
+    width: 265px;
+  }
+
+
+}
+
 @media only screen and (min-width: 700px) {
   #filter {
     position: absolute;
