@@ -27,7 +27,8 @@
     $('#overview-header').show();
     $('#overview').show();
     $('#map-holder').show();
-
+    $('#filter').off();
+    $('#filter').on('change', overviewController.onFormChange);
     overviewContent.index();
     console.log('overviewContent triggered successfully');
     ctx.handled = true;
@@ -40,6 +41,42 @@
 
     ctx.handled = true;
     next();
+  };
+
+  overviewController.onFormChange = function() {
+    console.log('resultsController.onFormChange called');
+    resultsController.handleFilters();
+    maps.clearMap(); //need to redraw marker for user position
+    var today = new Date();
+    var monthAgo = new Date(today.getTime() - 2592000000);
+    console.log(monthAgo);
+    today = today.getDate();
+    $('#overview-handlebars-here').empty();
+    var filteredIncidants = Incident.all.filter(function(current, index, array){
+      return resultsController.currentCodes.indexOf(current.event_clearance_code) !== -1;
+    }).filter(function(current, index, array){
+      if (resultsController.filterTime === 'today'){
+        if (current.event_clearance_date){
+          return today === new Date(current.event_clearance_date.replace('T', ' ')).getDate();
+        } else {
+          return false;
+        }
+      } else if (resultsController.filterTime === 'month'){
+        console.log('month radio button checked');
+        if (current.event_clearance_date){
+          return new Date(current.event_clearance_date.replace('T', ' ')) > monthAgo;
+        } else {
+          return false;
+        }
+      } else {
+        console.log('resultsController.filterTime has unrecognized format');
+      }
+    });
+    console.log('filteredIncidants is ', filteredIncidants);
+    filteredIncidants.forEach(function(thisIncident){
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      $('#overview-handlebars-here').append(resultsContent.render(thisIncident));
+    });
   };
 
   module.overviewController = overviewController;

@@ -98,6 +98,7 @@
     $('header').css('border-bottom', '1px black solid');
     $('#show-filters').on('click', resultsController.showFilters);
     resultsContent.index();
+    $('#filter').off();
     $('#filter').on('change', resultsController.onFormChange);
     ctx.handled = true;
     next();

@@ -19,7 +19,16 @@
 
   overviewContent.renderArticlesAndMapMarkers = function(incidents){
     console.log('resultsContent.renderArticlesAndMapMarkers called');
-    Incident.all.forEach(function(thisIncident) {
+
+    var today = new Date().getDate();
+    var filteredIncidents = Incident.all.filter(function(current){
+      if (current.event_clearance_date){
+        return today === new Date(current.event_clearance_date.replace('T', ' ')).getDate();
+      } else {
+        return false;
+      }
+    });
+    filteredIncidents.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
       $('#overview-handlebars-here').append(resultsContent.render(thisIncident));
       // Talk about giving specific ID's, EX: Results Handlebars and Overview Handlebars.  Give both classes for styling.
