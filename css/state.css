@@ -1,0 +1,41 @@
+@media only screen and (min-width: 700px) {
+  #filter {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 20%;
+    display: inline-block;
+  }
+  #google-map {
+    float: right;
+    width: 70%;
+  }
+  #show-filters{
+    display: none;
+  }
+  #map-holder{
+    height: 470px;
+  }
+  #map-holder > h2 {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .map-holder a{
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+  }
+}
+@media only screen and (min-width: 950px) {
+  #filter {
+    width: 15%;
+  }
+  #google-map {
+    float: right;
+    width: 80%;
+  }
+  #navbar-address-search{
+    width: 80%;
+  }
+}

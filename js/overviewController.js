@@ -19,6 +19,7 @@
 //Could be placed in overviewContent
   overviewController.index = function(ctx, next){
     console.log('overviewController.index triggered successfully');
+    $('header').css('border-bottom', '1px black solid');
     $('#index').hide();
     $('#results').hide();
     $('#results-header').hide();
