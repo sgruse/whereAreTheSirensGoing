@@ -12,7 +12,7 @@
 
 
   overviewContent.index = function(){
-    maps.buildMap([47.61, -122.34]);
+    maps.buildMap(null, {zoom: 10});
     console.log('overviewContent.index was called');
   };
 

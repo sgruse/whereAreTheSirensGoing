@@ -43,13 +43,16 @@
   //takes the google map, centers it on the user, then draws the markers where they need to go
   //centerPosition must be of type [lat, lng]
   //I feel like the else section should be handled elsewhere--that is, if there is no center postion, resultsController.searchParams should be set to the values listed there--it probably shouldn't be handled here
-  maps.buildMap = function (centerPosition) {
+  maps.buildMap = function (centerPosition, mapPropertiesDefault) {
     console.log('maps.buildMap called');
     console.log('centerPosition is', centerPosition);
-    var mapProperties = {
-      zoom:14,
-      mapTypeId:google.maps.MapTypeId.ROADMAP
+    var mapProperties = {};
+    if (mapPropertiesDefault){
+      mapProperties = mapPropertiesDefault;
+    } else {
+      mapProperties.zoom = 14;
     };
+    mapProperties.mapTypeId = google.maps.MapTypeId.ROADMAP;
     if (centerPosition) { // a position was provided
       console.log('centerPosition is truthy, will build map centered on user');
       mapProperties.center = new google.maps.LatLng(centerPosition[0], centerPosition[1]);
