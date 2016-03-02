@@ -17,7 +17,14 @@
   resultsContent.index = function() {
     console.log('resultsContent.index called');
     userPositionMarkerOptions = {
-      animation: 'DROP'
+      animation: google.maps.Animation.DROP,
+      icon: {
+        url: '/img/man.svg',
+        scaledSize: new google.maps.Size(32,32),
+        strokeColor: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 1
+      }
     };
     maps.buildMap([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
     maps.addMarker([+resultsController.searchParams.lat, +resultsController.searchParams.lng], false, userPositionMarkerOptions);
