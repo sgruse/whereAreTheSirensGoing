@@ -65,6 +65,7 @@
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));
     });
   };
+  
   //takes search parameters in from the navbar to set the value of resultsController.searchParams which is used as implicit argument for all functions from here on
   resultsController.detectParameters = function(ctx, next){
     console.log('resultsController.detectParameters called');

@@ -160,5 +160,17 @@
       ]
     }
   ];
+  
+  maps.userPositionMarkerOptions = {
+    animation: google.maps.Animation.DROP,
+    icon: {
+      url: '/img/man.svg',
+      scaledSize: new google.maps.Size(32,32),
+      strokeColor: 'blue',
+      fillColor: 'blue',
+      fillOpacity: 1
+    }
+  };
+  
   module.maps = maps;
 })(window);
