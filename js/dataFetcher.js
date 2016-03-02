@@ -21,6 +21,19 @@
     console.log(formattedUrl);
     return formattedUrl;
   };
+  
+  dataFetcher.test = function(callback){
+    $.ajax({
+      url: '/police/test' 
+    }).done(function(data, message, xhr){
+      console.log(message);
+      console.log(xhr);
+      console.log(data);
+      // if (callback){
+      //   callback();
+      // }
+    });
+  };
 
   dataFetcher.makeAjaxCall = function(url, callback){
     console.log('dataFetcher.makeAjaxCall called');
