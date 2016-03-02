@@ -61,7 +61,7 @@
     });
     console.log('filteredIncidants is ', filteredIncidants);
     filteredIncidants.forEach(function(thisIncident){
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));
     });
   };

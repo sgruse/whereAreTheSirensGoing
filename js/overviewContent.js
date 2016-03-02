@@ -13,7 +13,6 @@
 
   overviewContent.index = function(){
     maps.buildMap([47.61, -122.34]);
-    maps.addMarker([47.61, -122.34]);
     console.log('overviewContent.index was called');
   };
 
@@ -29,7 +28,7 @@
       }
     });
     filteredIncidents.forEach(function(thisIncident) {
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
       $('#overview-handlebars-here').append(resultsContent.render(thisIncident));
       // Talk about giving specific ID's, EX: Results Handlebars and Overview Handlebars.  Give both classes for styling.
     });

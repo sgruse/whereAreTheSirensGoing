@@ -10,17 +10,25 @@
   maps.instantiateMap = function(mapProperties){
     console.log('maps.instantiateMap called');
     maps.googleMap = new google.maps.Map(maps.googleMapEl, mapProperties); //overwrites maps.googleMap to be the map itself once it's drawn
+    maps.googleMap.set('styles', mapStyle);
   };
 
   //draws a single map marker on the specified point
   //markerPosition must be of type [lat, lng]
-  maps.addMarker = function(markerPosition){
+  //clearableFlag should be set to true for all markers corresponding to events and false for ones corresponding to user position
+  //defaultOptions should be used to set the animation and custom appearance for any map markers
+  maps.addMarker = function(markerPosition, clearableFlag, defaultOptions){
     console.log('maps.addMarker called');
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(markerPosition[0], markerPosition[1])
-    });
+    var markerOptions = {};
+    if (defaultOptions){
+      markerOptions = defaultOptions;
+    }
+    markerOptions.position = new google.maps.LatLng(markerPosition[0], markerPosition[1]);
+    var marker = new google.maps.Marker(markerOptions);
     marker.setMap(maps.googleMap);
-    maps.markerArray.push(marker);
+    if (clearableFlag){
+      maps.markerArray.push(marker);
+    }
   };
 
   //needs to clear the map of all markers
@@ -68,6 +76,86 @@
       }
     });
   };
-
+  
+  var mapStyle = [
+    {
+      featureType: 'administrative',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#444444'
+        }
+      ]
+    },
+    {
+      featureType: 'landscape',
+      elementType: 'all',
+      stylers: [
+        {
+          color: '#f2f2f2'
+        }
+      ]
+    },
+    {
+      featureType: 'poi',
+      elementType: 'all',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'road',
+      elementType: 'all',
+      stylers: [
+        {
+          saturation: -100
+        },
+        {
+          lightness: 45
+        }
+      ]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'all',
+      stylers: [
+        {
+          visibility: 'simplified'
+        }
+      ]
+    },
+    {
+      featureType: 'road.arterial',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'transit',
+      elementType: 'all',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'water',
+      elementType: 'all',
+      stylers: [
+        {
+          color: '#46bcec'
+        },
+        {
+          visibility: 'on'
+        }
+      ]
+    }
+  ];
   module.maps = maps;
 })(window);

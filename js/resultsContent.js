@@ -16,8 +16,11 @@
   //notably, this needs to draw the google map centered at the user's position
   resultsContent.index = function() {
     console.log('resultsContent.index called');
+    userPositionMarkerOptions = {
+      animation: 'DROP'
+    };
     maps.buildMap([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
-    maps.addMarker([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
+    maps.addMarker([+resultsController.searchParams.lat, +resultsController.searchParams.lng], false, userPositionMarkerOptions);
 
   };
 
@@ -34,7 +37,7 @@
 
 
     filteredIncidents.forEach(function(thisIncident) {
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
       $('#results-handlebars-here').append(resultsContent.render(thisIncident));
     });
 
