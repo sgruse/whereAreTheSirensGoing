@@ -10,7 +10,7 @@
     sexCrimes: ['020', '021', '141', '142'],
     qualityOfLifeCrimes: ['130', '139','174', '176', '177', '080', '081', '082', '083', '084', '085', '086', '087', '243', '244', '245', '246', '170', '171', '220', '221', '181', '182', '183', '184', '450', '150', '151', '152', '125', '127']
   };
-    
+
   //This builds the URL for the new API implementation on form changes
   dataFetcher.formatSpecificUrlForApi = function(parameterObj){
     console.log('dataFetcher.formatSpecificUrlForApi called');
@@ -45,9 +45,9 @@
         return current;
       }
     }).join('-');
-  };
+  };  
   
-
+  //makes the actual get requests using the url provided
   dataFetcher.makeAjaxCall = function(url, callback){
     console.log('dataFetcher.makeAjaxCall called');
     $.ajax({ 
@@ -67,8 +67,6 @@
       }
     });
   };
-
-
 
   //end result of this needs to be to store the data object somewhere
   dataFetcher.parseData = function(data){

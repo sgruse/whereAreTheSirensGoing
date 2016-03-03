@@ -62,11 +62,10 @@
 
 
 
-/*#results {
-  display: flex;
-  justify-content: center;
+#results {
+  display: none;
 }
-#overview {
+/*#overview {
   display: flex;
   justify-content: center;
 }*/

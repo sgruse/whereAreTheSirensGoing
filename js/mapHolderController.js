@@ -54,7 +54,23 @@
     });
   };
   
+  //doesn't work
+  mapHolderController.attachSearchBarListener = function(){
+    $('#navbar-address-search').on('submit', function(event){
+      event.preventDefault();
+      search.processSearchBarInput($('#search'));
+    });
+  };
   
+  //contains the shared functionality between the overview and results pages
+  mapHolderController.hideAndShowAppropriate = function(){
+    $('body').css('background-color', 'white');
+    $('header').css('border-bottom', '1px black solid');
+    $('#index').hide();
+    $('#map-holder').show();
+    $('#filter').off();
+    $('#results').show().css('display', 'flex');
+  };
   
   
   module.mapHolderController = mapHolderController;
