@@ -20,6 +20,7 @@
   
   overviewController.index = function(ctx, next){
     console.log('overviewController.index triggered successfully');
+    $('#results-handlebars-here').empty();
     mapHolderController.hideAndShowAppropriate();
     $('#results-header').hide();
     $('#overview-header').show();
@@ -32,18 +33,5 @@
     next();
   };
   
-  
-  overviewController.hideAndShowAppropriate = function(){
-    $('body').css('background-color', 'white');
-    $('header').css('border-bottom', '1px black solid');
-    $('#index').hide();
-    // $('#results').hide();
-    $('#results-header').hide();
-    $('#overview-header').show();
-    // $('#overview').show();
-    $('#map-holder').show();
-    $('#filter').off();
-  };
-
   module.overviewController = overviewController;
 })(window);

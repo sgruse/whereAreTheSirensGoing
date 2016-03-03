@@ -4,15 +4,6 @@
   resultsController.searchParams; //maybe this is the best place to declare the initial general values for seattle? If that's the case though, they'll be overwritten as soon as a results call is made
   resultsController.filterTime = 'today';
   
-  resultsController.onFormChange = function(){
-    mapHolderController.fetchData(function(data){
-      maps.clearMap();
-      $('#results-handlebars-here').empty();
-      dataFetcher.parseData(data);
-      resultsContent.renderArticlesAndMapMarkers();
-    });
-  };
-  
   //takes search parameters in from the navbar to set the value of mapHolderController.searchParams which is used as implicit argument for all functions from here on
   resultsController.detectParameters = function(ctx, next){
     console.log('resultsController.detectParameters called');
@@ -40,7 +31,9 @@
   resultsController.index = function(ctx, next){
     $('#results-handlebars-here').empty();
     console.log('resultsController.index called');
-    resultsController.hideAndShowAppropriate();
+    mapHolderController.hideAndShowAppropriate();
+    $('#results-header').show();
+    $('#overview-header').hide();
     $('#show-filters').on('click', resultsController.showFilters);
     mapHolderController.attachSearchBarListener();
     resultsContent.index();
@@ -48,18 +41,6 @@
     $('#filter').on('change', mapHolderController.onFormChange);
     ctx.handled = true;
     next();
-  };
-  
-  //just hides and shows stuff
-  resultsController.hideAndShowAppropriate = function(){
-    $('body').css('background-color', 'white');
-    $('.results').show();
-    $('#results-header').show();
-    $('#index').hide();
-    $('#overview').hide();
-    $('#map-holder').show();
-    $('#overview-header').hide();
-    $('header').css('border-bottom', '1px black solid');
   };
 
   //need to refactor this so that the part that takes parameters is less clumsy
