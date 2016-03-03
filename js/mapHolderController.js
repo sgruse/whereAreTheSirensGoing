@@ -56,11 +56,10 @@
   
   //doesn't work
   mapHolderController.attachSearchBarListener = function(){
-    $('#address-search-form').on('submit', function(event){
+    $('#navbar-address-search').on('submit', function(event){
       event.preventDefault();
       search.processSearchBarInput($('#search'));
     });
-    
   };
   
   //contains the shared functionality between the overview and results pages

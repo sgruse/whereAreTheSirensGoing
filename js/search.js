@@ -45,12 +45,6 @@
     });
   };
 
-  //this is used to bring up the form on the index page so that they can search instead of having auto location detection
-  // search.makeSearchBarVisible = function(){
-  //   console.log('search.makeSearchBarVisible called');
-  //   $searchBar.css('display', 'block');
-  // };
-
   //make search bar do something when submitted
   search.attachSearchBarListener = function(){
     console.log('search.attachSearchBarListener called');

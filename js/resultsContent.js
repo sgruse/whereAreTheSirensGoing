@@ -15,7 +15,7 @@
     maps.addMarker([+mapHolderController.searchParams.lat, +mapHolderController.searchParams.lng], false, userPositionMarkerOptions);
   };
 
-  //this needs to be fixed so that it no longer does anything with checking the date
+  //this builds the articles and map markers for both the overview and results pages
   resultsContent.renderArticlesAndMapMarkers = function(incidents){
     console.log('resultsContent.renderArticlesAndMapMarkers called');
     var $resultsHandlebarsHere = $('#results-handlebars-here');

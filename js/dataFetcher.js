@@ -13,25 +13,6 @@
     sexCrimes: ['020', '021', '141', '142'],
     qualityOfLifeCrimes: ['130', '139','174', '176', '177', '080', '081', '082', '083', '084', '085', '086', '087', '243', '244', '245', '246', '170', '171', '220', '221', '181', '182', '183', '184', '450', '150', '151', '152', '125', '127']
   };
-
-  //deprecated
-  // dataFetcher.formatUrlForApi = function(parameterObj, additionalWhere){
-  //   console.log('dataFetcher.formatUrlForApi');
-  //   var latitude, longitude;
-  //   var formattedUrl = 'https://data.seattle.gov/resource/pu5n-trf4.json';
-  //   formattedUrl += '?&$order=event_clearance_date DESC';
-  //   var whereClause = "&$where=event_clearance_code in ('090', '091', '092', '040', '043', '049', '041', '026', '242', '249', '179', '010', '510', '291', '292', '330', '051', '052', '050', '053', '160', '161', '020', '021', '141', '142', '071', '072', '074', '063', '061', '062', '130', '139','174', '176', '177', '080', '081', '082', '083', '084', '085', '086', '087', '243', '244', '245', '246', '170', '171', '220', '221', '181', '182', '183', '184', '450', '150', '151', '152', '125', '127')";
-  //   if (parameterObj.lat && parameterObj.lng){
-  //     whereClause += 'AND within_circle(incident_location,'+ parameterObj.lat + ',' + parameterObj.lng + ',1000)'; //stretch goal: make the 10000 a variable passed in through the parameters so that it can be related to google maps zoom
-  //   }
-  //   if (additionalWhere){
-  //     whereClause += 'AND ' + additionalWhere;
-  //   }
-  //   console.log(whereClause);
-  //   formattedUrl += whereClause;
-  //   console.log(formattedUrl);
-  //   return formattedUrl;
-  // };
   
   //This builds the URL for the new API implementation on form changes
   dataFetcher.formatSpecificUrlForApi = function(parameterObj){
@@ -67,9 +48,9 @@
         return current;
       }
     }).join('-');
-  };
+  };  
   
-
+  //makes the actual get requests using the url provided
   dataFetcher.makeAjaxCall = function(url, callback){
     console.log('dataFetcher.makeAjaxCall called');
     $.ajax({ 
@@ -89,8 +70,6 @@
       }
     });
   };
-
-
 
   //end result of this needs to be to store the data object somewhere
   dataFetcher.parseData = function(data){
