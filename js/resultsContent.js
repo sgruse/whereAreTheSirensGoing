@@ -1,9 +1,3 @@
-// draw objects onto map
-//
-// format objects into articles w/ handlebars
-//
-// VIEW - will compile handlebars,
-
 (function(module){
   resultsContent = {};
   var template = Handlebars.compile($('#incident-template').text());
@@ -16,52 +10,36 @@
   //notably, this needs to draw the google map centered at the user's position
   resultsContent.index = function() {
     console.log('resultsContent.index called');
-    maps.buildMap([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
-    maps.addMarker([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
-
+    userPositionMarkerOptions = maps.userPositionMarkerOptions;
+    maps.buildMap([+mapHolderController.searchParams.lat, +mapHolderController.searchParams.lng]);
+    maps.addMarker([+mapHolderController.searchParams.lat, +mapHolderController.searchParams.lng], false, userPositionMarkerOptions);
   };
 
+  //this needs to be fixed so that it no longer does anything with checking the date
   resultsContent.renderArticlesAndMapMarkers = function(incidents){
     console.log('resultsContent.renderArticlesAndMapMarkers called');
-    var today = new Date().getDate();
-    var filteredIncidents = Incident.all.filter(function(current){
-      if (current.event_clearance_date){
-        return today === new Date(current.event_clearance_date.replace('T', ' ')).getDate();
-      } else {
-        return false;
-      }
+    var $resultsHandlebarsHere = $('#results-handlebars-here');
+    $resultsHandlebarsHere.empty();
+    incidents.forEach(function(thisIncident) {
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
+      $resultsHandlebarsHere.append(resultsContent.render(thisIncident));
     });
-
-
-    filteredIncidents.forEach(function(thisIncident) {
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude]);
-      $('#results-handlebars-here').append(resultsContent.render(thisIncident));
-    });
-
-    $('#results-handlebars-here li:nth-of-type(n+6)').hide();
-
-
-    // $('<div/>', {
-    //   'id':'myDiv',
-    //   'class':'myClass',
-    //   'style':'cursor:pointer;font-weight:bold;',
-    //   'html':'<span id="readon">Display all Incidents >>></span>',
-    //   'click':function(){ resultsContent.readOn(); },
-    //   'mouseenter':function(){ $(this).css('color', 'red'); },
-    //   'mouseleave':function(){ $(this).css('color', 'black'); }
-    // }).appendTo('.handlebars-goes-here');
+    resultsContent.attachReadOnListenerAndHide();
   };
 
-  $('#resultsReadOn').on('click', function(e){
-    event.preventDefault();
-    resultsContent.readOn();
-  });
+  
+  resultsContent.attachReadOnListenerAndHide = function(){
+    $('#results-handlebars-here li:nth-of-type(n+6)').hide();
+    $('#resultsReadOn').on('click', function(e){
+      event.preventDefault();
+      resultsContent.readOn();
+    });
+  };
 
 
   resultsContent.readOn = function() {
     $('#results-handlebars-here li:nth-of-type(n+6)').show();
     $('#resultsReadOn').hide();
-
   };
 
 

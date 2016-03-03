@@ -53,18 +53,18 @@
         <div class="skyline-holder">
           <div class="skyline-image">
           </div>
-      </div>
-      <ul id="index-form-container">
-        <li><button id="index-main-button" class="main-button">Detect your location</button></li>
-        <li><button id="index-search-button" class="search-button">Address Search</button></li>
-        <li><button id="index-overview-button" class="overview-button">City Overview</button></li>
-        <li class="justify-space-around">
-          <form class="address-search-form" id="search-form-no-autodetect">
-            <input type="search" id="main-address-input" placeholder="Enter a street address:"></input>
-            <input type="submit" value="Find the sirens"></input>
-          </form>
-        </li>
-      </ul>
+        </div>
+        <ul id="index-form-container">
+          <li><button id="index-main-button" class="main-button">Detect your location</button></li>
+          <li><button id="index-search-button" class="search-button">Address Search</button></li>
+          <li><button id="index-overview-button" class="overview-button">City Overview</button></li>
+          <li class="justify-space-around">
+            <form class="address-search-form" id="search-form-no-autodetect">
+              <input type="search" id="main-address-input" placeholder="Enter a street address:"></input>
+              <input type="submit" value="Find the sirens"></input>
+            </form>
+          </li>
+        </ul>
       </section>
 
       <div id="map-holder" class="map-holder">
@@ -78,15 +78,15 @@
         </div>
         <form id="filter">
           <h3>Filter by type:</h3>
-          <label><input data-filterArrayIndex="1" class="type-filter" type="checkbox" id="violent-crimes" checked> Violent Crimes</label>
-          <label><input data-filterArrayIndex="2" class="type-filter" type="checkbox" id="non-violent" checked> Non-Violent Crimes</label>
-          <label><input data-filterArrayIndex="3" class="type-filter" type="checkbox" id="sex-crimes" checked> Sex Crimes</label>
-          <label><input data-filterArrayIndex="4" class="type-filter" type="checkbox" id="vehicle" checked> Vehicle Crimes</label>
-          <label><input data-filterArrayIndex="5" class="type-filter" type="checkbox" id="quality" checked> Quality of Life</label>
+          <label><input data-codeTypes="violentCrimes" class="type-filter" type="checkbox" id="violent-crimes" checked> Violent Crimes</label>
+          <label><input data-codeTypes="nonViolentCrimes" class="type-filter" type="checkbox" id="non-violent" checked> Non-Violent Crimes</label>
+          <label><input data-codeTypes="sexCrimes" class="type-filter" type="checkbox" id="sex-crimes" checked> Sex Crimes</label>
+          <label><input data-codeTypes="vehicleCrimes" class="type-filter" type="checkbox" id="vehicle" checked> Vehicle Crimes</label>
+          <label><input data-codeTypes="qualityOfLifeCrimes" class="type-filter" type="checkbox" id="quality" checked> Quality of Life</label>
           <h3>Filter by time:</h3>
           <label><input class="time-filter" type="radio" name ="time-filter" id="day" value="today" checked> Incidents today</label>
           <label><input class="time-filter" type="radio" name ="time-filter" id="month" value="month"> Incidents this Month</label>
-          <!-- <label><input class="time-filter" type="radio" name ="time-filter" id="year" value="year">Incidents this year</label> -->
+          
         </form>
         <h2 id="results-header" class="map-header">Incidents in <span class="sirens">your area</span></h2>
         <h2 id="overview-header" class="map-header">Incidents in <span class="sirens">all of Seattle</span></h2>
@@ -94,7 +94,6 @@
 
 
       <section id="results" class="results main-content">
-        <!-- <h2>INCIDENTS</h2> -->
         <ul id="results-handlebars-here" class="handlebars-goes-here"></ul>
         <section id="resultsReadOn" class="readOn"><a href="#">Display All Incidents >>></a></section>
       </section>
@@ -102,8 +101,6 @@
 
 
       <section id="overview" class="overview main-content">
-        <!-- <div id="google-map"></div> -->
-        <!-- <h2>INCIDENTS</h2> -->
         <ul id="overview-handlebars-here" class="handlebars-goes-here"></ul>
         <section id="overviewReadOn" class="readOn"><a href="#">Display All Incidents >>></a></section>
       </section>
@@ -125,7 +122,8 @@
     <script src="/js/maps.js"></script>
     <script src="/js/incident.js"></script>
     <script src="/js/dataFetcher.js"></script>
-
+    
+    <script src="/js/mapHolderController.js"></script>
     <script src="/js/resultsController.js"></script>
     <script src="/js/resultsContent.js"></script>
     <script src="/js/overviewController.js"></script>

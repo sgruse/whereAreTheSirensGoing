@@ -10,17 +10,25 @@
   maps.instantiateMap = function(mapProperties){
     console.log('maps.instantiateMap called');
     maps.googleMap = new google.maps.Map(maps.googleMapEl, mapProperties); //overwrites maps.googleMap to be the map itself once it's drawn
+    maps.googleMap.set('styles', mapStyle);
   };
 
   //draws a single map marker on the specified point
   //markerPosition must be of type [lat, lng]
-  maps.addMarker = function(markerPosition){
+  //clearableFlag should be set to true for all markers corresponding to events and false for ones corresponding to user position
+  //defaultOptions should be used to set the animation and custom appearance for any map markers
+  maps.addMarker = function(markerPosition, clearableFlag, defaultOptions){
     console.log('maps.addMarker called');
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(markerPosition[0], markerPosition[1])
-    });
+    var markerOptions = {};
+    if (defaultOptions){
+      markerOptions = defaultOptions;
+    }
+    markerOptions.position = new google.maps.LatLng(markerPosition[0], markerPosition[1]);
+    var marker = new google.maps.Marker(markerOptions);
     marker.setMap(maps.googleMap);
-    maps.markerArray.push(marker);
+    if (clearableFlag){
+      maps.markerArray.push(marker);
+    }
   };
 
   //needs to clear the map of all markers
@@ -34,14 +42,16 @@
 
   //takes the google map, centers it on the user, then draws the markers where they need to go
   //centerPosition must be of type [lat, lng]
-  //I feel like the else section should be handled elsewhere--that is, if there is no center postion, resultsController.searchParams should be set to the values listed there--it probably shouldn't be handled here
-  maps.buildMap = function (centerPosition) {
+  maps.buildMap = function (centerPosition, mapPropertiesDefault) {
     console.log('maps.buildMap called');
     console.log('centerPosition is', centerPosition);
-    var mapProperties = {
-      zoom:14,
-      mapTypeId:google.maps.MapTypeId.ROADMAP
+    var mapProperties = {};
+    if (mapPropertiesDefault){
+      mapProperties = mapPropertiesDefault;
+    } else {
+      mapProperties.zoom = 14;
     };
+    mapProperties.mapTypeId = google.maps.MapTypeId.ROADMAP;
     if (centerPosition) { // a position was provided
       console.log('centerPosition is truthy, will build map centered on user');
       mapProperties.center = new google.maps.LatLng(centerPosition[0], centerPosition[1]);
@@ -68,6 +78,98 @@
       }
     });
   };
-
+  
+  var mapStyle = [
+    {
+      featureType: 'administrative',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#444444'
+        }
+      ]
+    },
+    {
+      featureType: 'landscape',
+      elementType: 'all',
+      stylers: [
+        {
+          color: '#f2f2f2'
+        }
+      ]
+    },
+    {
+      featureType: 'poi',
+      elementType: 'all',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'road',
+      elementType: 'all',
+      stylers: [
+        {
+          saturation: -100
+        },
+        {
+          lightness: 45
+        }
+      ]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'all',
+      stylers: [
+        {
+          visibility: 'simplified'
+        }
+      ]
+    },
+    {
+      featureType: 'road.arterial',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'transit',
+      elementType: 'all',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'water',
+      elementType: 'all',
+      stylers: [
+        {
+          color: '#46bcec'
+        },
+        {
+          visibility: 'on'
+        }
+      ]
+    }
+  ];
+  
+  maps.userPositionMarkerOptions = {
+    animation: google.maps.Animation.DROP,
+    icon: {
+      url: '/img/man.svg',
+      scaledSize: new google.maps.Size(32,32),
+      strokeColor: 'blue',
+      fillColor: 'blue',
+      fillOpacity: 1
+    }
+  };
+  
   module.maps = maps;
 })(window);
