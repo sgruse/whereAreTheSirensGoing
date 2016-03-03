@@ -4,30 +4,25 @@
   resultsController.searchParams; //maybe this is the best place to declare the initial general values for seattle? If that's the case though, they'll be overwritten as soon as a results call is made
   resultsController.filterTime = 'today';
 
-  //
+  //this is responsible for implementing the filters functionality
   resultsController.handleFilters = function() {
     console.log('resultsController.handleFilters called');
     var checkedBoxIndex = [];
     var $filter = $('#filter');
     resultsController.filterTime = $filter.find('.time-filter:checked').val();
     $filter.find('.type-filter:checked').each(function(){
-      checkedBoxIndex.push($(this).attr('data-filterArrayIndex'));
+      checkedBoxIndex.push($(this).attr('data-codeTypes'));
     });
     var policeCodesArray = checkedBoxIndex.map(function(current){
-      return dataFetcher.filterArray[current-1][2]; //switch to 0-4 on index
+      return dataFetcher.filterCodes[current];
     });
-    var flattenedPoliceCodesArray = policeCodesArray.reduce(function(prev, current, index, array){
-      return prev.concat(current);
-    },[]);
+    var flattenedPoliceCodesArray = mapHolderController.flattenArrays(policeCodesArray);
     console.log(flattenedPoliceCodesArray);
-    resultsController.currentCodes = flattenedPoliceCodesArray;
-    // dataFetcher.filterArray.filter(function(current, index, array){
-    //   return checkedBoxID.indexOf(replace )
-    // });
+    return resultsController.currentCodes = flattenedPoliceCodesArray;
   };
 
   //runs whenever the filters form below the map is changed
-  resultsController.onFormChange = function() {
+  resultsController.onFormChangeOrig = function() {
     console.log('resultsController.onFormChange called');
     resultsController.handleFilters();
     maps.clearMap(); //need to redraw marker for user position
@@ -66,19 +61,28 @@
     });
   };
   
-  //takes search parameters in from the navbar to set the value of resultsController.searchParams which is used as implicit argument for all functions from here on
+  resultsController.onFormChange = function(){
+    mapHolderController.fetchData(function(data){
+      maps.clearMap();
+      $('#results-handlebars-here').empty();
+      dataFetcher.parseData(data);
+      resultsContent.renderArticlesAndMapMarkers();
+    });
+  };
+  
+  //takes search parameters in from the navbar to set the value of mapHolderController.searchParams which is used as implicit argument for all functions from here on
   resultsController.detectParameters = function(ctx, next){
     console.log('resultsController.detectParameters called');
     console.log('ctx is', ctx);
     console.log('ctx params are', ctx.params);
-    resultsController.searchParams = resultsController.pullPropertiesFromUrl(ctx);
-    console.log('resultsController.searchParams are', resultsController.searchParams);
+    mapHolderController.searchParams = resultsController.pullPropertiesFromUrl(ctx);
+    console.log('mapHolderController.searchParams are', mapHolderController.searchParams);
 
     ctx.handled = true;
     next();
   };
 
-  //applies regular expression to the url to build the resultsController.searchParams object
+  //applies regular expression to the url to build the mapHolderController.searchParams object
   resultsController.pullPropertiesFromUrl = function(ctx){
     console.log('resultsController.pullPropertiesFromUrl  called');
     return ctx.params.parameters.match(/(\$[^\$\s]+:[^\$\s]+)/g).reduce(function(acc, current){
@@ -89,9 +93,21 @@
     }, {});
   };
 
-  //will need to be redoce so it works whether you are coming initially from the index page/loading this url for the first time OR coming from results or overview already where the google map already exists
+  //will need to be reduce so it works whether you are coming initially from the index page/loading this url for the first time OR coming from results or overview already where the google map already exists
   resultsController.index = function(ctx, next){
+    $('#results-handlebars-here').empty();
     console.log('resultsController.index called');
+    resultsController.hideAndShowAppropriate();
+    $('#show-filters').on('click', resultsController.showFilters);
+    resultsContent.index();
+    $('#filter').off();
+    $('#filter').on('change', mapHolderController.onFormChange);
+    ctx.handled = true;
+    next();
+  };
+  
+  //just hides and shows stuff
+  resultsController.hideAndShowAppropriate = function(){
     $('body').css('background-color', 'white');
     $('.results').show();
     $('#results-header').show();
@@ -100,26 +116,23 @@
     $('#map-holder').show();
     $('#overview-header').hide();
     $('header').css('border-bottom', '1px black solid');
-    $('#show-filters').on('click', resultsController.showFilters);
-    resultsContent.index();
-    $('#filter').off();
-    $('#filter').on('change', resultsController.onFormChange);
-    ctx.handled = true;
-    next();
   };
 
   //need to refactor this so that the part that takes parameters is less clumsy
-  resultsController.fetchData = function(ctx, next) {
-    console.log('resultsController.fetchData  called');
-    var formattedApiUrl = dataFetcher.formatUrlForApi(resultsController.searchParams);
-    dataFetcher.makeAjaxCall(formattedApiUrl, function(data){
+  resultsController.fetchInitialData = function(ctx, next) {
+    console.log('resultsController.fetchInitialData called');
+    mapHolderController.fetchData(function(data){
       if (data){
         dataFetcher.parseData(data);
+        resultsContent.renderArticlesAndMapMarkers(Incident.all);
+      } else {
+        alert('error');
       }
       ctx.handled = true;
       next();
     });
   };
+
 
   resultsController.showFilters = function(){
     $('#filter').slideToggle();

@@ -1,6 +1,6 @@
 (function(module){
   indexContent = {};
-  $searchFormNoAutodetect = $('#search-form-no-autodetect');
+  $searchFormNoAutodetect = $('#search-form-no-autodetect'); //should rename to index search bar
 
 
   // search.getUserLocation();

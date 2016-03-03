@@ -1,10 +1,8 @@
 (function(module){
 
   overviewController = {};
-  var appToken = '0vBJ6JiStgBAfDkeAJf5h7645';
-
-  //code below could be refactored, using dataFetcher to make the ajax call
-  //ctx is causing problems
+  
+  
   overviewController.callBasicData = function(ctx, next) {
     console.log('call basic data triggered successfully');
     var formattedApiUrl = dataFetcher.formatUrlForApi({});
@@ -16,7 +14,25 @@
       next();
     });
   };
-//Could be placed in overviewContent
+  
+  //this grabs the data that will initially be shown on the page 
+  overviewController.fetchInitialData = function(ctx, next){
+    console.log('overviewController.fetchInitialData called');
+    mapHolderController.searchParams = {};
+    mapHolderController.fetchData(function(data){
+      if (data){
+        dataFetcher.parseData(data);
+        overviewContent.renderArticlesAndMapMarkers(Incident.all);
+      } else {
+        alert('error');
+      }
+      ctx.handled = true;
+      next();
+    });
+    
+  };
+
+  //
   overviewController.index = function(ctx, next){
     console.log('overviewController.index triggered successfully');
     $('body').css('background-color', 'white');
@@ -28,7 +44,7 @@
     $('#overview').show();
     $('#map-holder').show();
     $('#filter').off();
-    $('#filter').on('change', overviewController.onFormChange);
+    $('#filter').on('change', mapHolderController.onFormChange);
     overviewContent.index();
     console.log('overviewContent triggered successfully');
     ctx.handled = true;

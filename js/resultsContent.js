@@ -15,27 +15,21 @@
   resultsContent.index = function() {
     console.log('resultsContent.index called');
     userPositionMarkerOptions = maps.userPositionMarkerOptions;
-    maps.buildMap([+resultsController.searchParams.lat, +resultsController.searchParams.lng]);
-    maps.addMarker([+resultsController.searchParams.lat, +resultsController.searchParams.lng], false, userPositionMarkerOptions);
+    maps.buildMap([+mapHolderController.searchParams.lat, +mapHolderController.searchParams.lng]);
+    maps.addMarker([+mapHolderController.searchParams.lat, +mapHolderController.searchParams.lng], false, userPositionMarkerOptions);
   };
 
+  //this needs to be fixed so that it no longer does anything with checking the date
   resultsContent.renderArticlesAndMapMarkers = function(incidents){
     console.log('resultsContent.renderArticlesAndMapMarkers called');
-    var today = new Date().getDate();
-    var filteredIncidents = Incident.all.filter(function(current){
-      if (current.event_clearance_date){
-        return today === new Date(current.event_clearance_date.replace('T', ' ')).getDate();
-      } else {
-        return false;
-      }
-    });
-    filteredIncidents.forEach(function(thisIncident) {
+    var $resultsHandlebarsHere = $('#results-handlebars-here');
+    $resultsHandlebarsHere.empty();
+    incidents.forEach(function(thisIncident) {
       maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
-      $('#results-handlebars-here').append(resultsContent.render(thisIncident));
+      $resultsHandlebarsHere.append(resultsContent.render(thisIncident));
     });
     resultsContent.attachReadOnListenerAndHide();
   };
-
 
 
   resultsContent.attachReadOnListenerAndHide = function(){
