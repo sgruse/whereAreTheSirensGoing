@@ -2,7 +2,7 @@
 
   var appToken = '0vBJ6JiStgBAfDkeAJf5h7645';
   var dataFetcher = {};
-  
+
   dataFetcher.filterCodes = {
     violentCrimes: ['090', '091', '092', '040', '043', '049', '041', '026', '242', '249', '179', '010', '510', '291', '292', '330', '051', '052'],
     nonViolentCrimes: ['050', '053', '160', '161'],
@@ -10,7 +10,7 @@
     sexCrimes: ['020', '021', '141', '142'],
     qualityOfLifeCrimes: ['130', '139','174', '176', '177', '080', '081', '082', '083', '084', '085', '086', '087', '243', '244', '245', '246', '170', '171', '220', '221', '181', '182', '183', '184', '450', '150', '151', '152', '125', '127']
   };
-  
+
   //This builds the URL for the new API implementation on form changes
   dataFetcher.formatSpecificUrlForApi = function(parameterObj){
     console.log('dataFetcher.formatSpecificUrlForApi called');
