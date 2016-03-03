@@ -1,7 +1,3 @@
-// draw objects onto map
-// format objects into articles w/ handlebars
-// VIEW - will compile handlebars,
-
 (function(module){
   resultsContent = {};
   var template = Handlebars.compile($('#incident-template').text());
@@ -31,7 +27,7 @@
     resultsContent.attachReadOnListenerAndHide();
   };
 
-
+  
   resultsContent.attachReadOnListenerAndHide = function(){
     $('#results-handlebars-here li:nth-of-type(n+6)').hide();
     $('#resultsReadOn').on('click', function(e){

@@ -3,63 +3,6 @@
   resultsController.currentCodes = [];
   resultsController.searchParams; //maybe this is the best place to declare the initial general values for seattle? If that's the case though, they'll be overwritten as soon as a results call is made
   resultsController.filterTime = 'today';
-
-  //this is responsible for implementing the filters functionality
-  resultsController.handleFilters = function() {
-    console.log('resultsController.handleFilters called');
-    var checkedBoxIndex = [];
-    var $filter = $('#filter');
-    resultsController.filterTime = $filter.find('.time-filter:checked').val();
-    $filter.find('.type-filter:checked').each(function(){
-      checkedBoxIndex.push($(this).attr('data-codeTypes'));
-    });
-    var policeCodesArray = checkedBoxIndex.map(function(current){
-      return dataFetcher.filterCodes[current];
-    });
-    var flattenedPoliceCodesArray = mapHolderController.flattenArrays(policeCodesArray);
-    console.log(flattenedPoliceCodesArray);
-    return resultsController.currentCodes = flattenedPoliceCodesArray;
-  };
-
-  //runs whenever the filters form below the map is changed
-  resultsController.onFormChangeOrig = function() {
-    console.log('resultsController.onFormChange called');
-    resultsController.handleFilters();
-    maps.clearMap(); //need to redraw marker for user position
-    var today = new Date();
-    var monthAgo = new Date(today.getTime() - 2592000000);
-    console.log(monthAgo);
-    var day = today.getDate();
-    var month = today.getMonth();
-    var year = today.getYear();
-    $('#results-handlebars-here').empty();
-    var filteredIncidants = Incident.all.filter(function(current, index, array){
-      return resultsController.currentCodes.indexOf(current.event_clearance_code) !== -1;
-    }).filter(function(current, index, array){
-      if (resultsController.filterTime === 'today'){
-        if (current.event_clearance_date){
-          var thatDay = new Date(current.event_clearance_date.replace('T', ' '));
-          return (day === thatDay.getDate() && month === thatDay.getMonth() && year === thatDay.getYear());
-        } else {
-          return false;
-        }
-      } else if (resultsController.filterTime === 'month'){
-        console.log('month radio button checked');
-        if (current.event_clearance_date){
-          return new Date(current.event_clearance_date.replace('T', ' ')) > monthAgo;
-        } else {
-          return false;
-        }
-      } else {
-        console.log('resultsController.filterTime has unrecognized format');
-      }
-    });
-    console.log('filteredIncidants is ', filteredIncidants);
-    filteredIncidants.forEach(function(thisIncident){
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
-      $('#results-handlebars-here').append(resultsContent.render(thisIncident));
-    });
-  };
   
   resultsController.onFormChange = function(){
     mapHolderController.fetchData(function(data){
@@ -136,15 +79,6 @@
 
   resultsController.showFilters = function(){
     $('#filter').slideToggle();
-  };
-
-  //this handles everything that still needs to happen after the ajax call to the police/fire api finishes
-  resultsController.afterAjaxCall = function(ctx, next){
-    console.log('resultsController.afterAjaxCall called');
-    resultsContent.renderArticlesAndMapMarkers();
-
-    ctx.handled = true;
-    next();
   };
 
   //if they just go to /results, it should take them to the index page to enter a search

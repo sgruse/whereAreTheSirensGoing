@@ -17,7 +17,7 @@
       $overviewHandlebarsHere.append(resultsContent.render(thisIncident));
     });
     
-    overviewContent.attachReadOnListenerAndHide();
+    // overviewContent.attachReadOnListenerAndHide();
   };
 
   

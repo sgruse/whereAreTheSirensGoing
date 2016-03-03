@@ -44,6 +44,7 @@
     });
   };
   
+  //need to handle the hide and show teasers
   mapHolderController.onFormChange = function(){
     mapHolderController.fetchData(function(data){
       maps.clearMap();
