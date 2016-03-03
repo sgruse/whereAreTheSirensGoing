@@ -42,6 +42,7 @@
     console.log('resultsController.index called');
     resultsController.hideAndShowAppropriate();
     $('#show-filters').on('click', resultsController.showFilters);
+    mapHolderController.attachSearchBarListener();
     resultsContent.index();
     $('#filter').off();
     $('#filter').on('change', mapHolderController.onFormChange);

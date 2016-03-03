@@ -54,7 +54,23 @@
     });
   };
   
+  //doesn't work
+  mapHolderController.attachSearchBarListener = function(){
+    $('#address-search-form').on('submit', function(event){
+      event.preventDefault();
+      search.processSearchBarInput($('#search'));
+    });
+    
+  };
   
+  mapHolderController.hideAndShowAppropriate = function(){
+    $('body').css('background-color', 'white');
+    $('header').css('border-bottom', '1px black solid');
+    $('#index').hide();
+    $('#map-holder').show();
+    $('#filter').off();
+    $('#results').show();
+  };
   
   
   module.mapHolderController = mapHolderController;

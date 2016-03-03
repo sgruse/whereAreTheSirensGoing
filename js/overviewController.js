@@ -9,7 +9,7 @@
     mapHolderController.fetchData(function(data){
       if (data){
         dataFetcher.parseData(data);
-        overviewContent.renderArticlesAndMapMarkers(Incident.all);
+        resultsContent.renderArticlesAndMapMarkers(Incident.all);
       }
       ctx.handled = true;
       next();
@@ -20,8 +20,11 @@
   
   overviewController.index = function(ctx, next){
     console.log('overviewController.index triggered successfully');
-    overviewController.hideAndShowAppropriate();
+    mapHolderController.hideAndShowAppropriate();
+    $('#results-header').hide();
+    $('#overview-header').show();
     $('#show-filters').on('click', resultsController.showFilters);
+    mapHolderController.attachSearchBarListener();
     $('#filter').on('change', mapHolderController.onFormChange);
     overviewContent.index();
     console.log('overviewContent triggered successfully');
@@ -29,14 +32,15 @@
     next();
   };
   
+  
   overviewController.hideAndShowAppropriate = function(){
     $('body').css('background-color', 'white');
     $('header').css('border-bottom', '1px black solid');
     $('#index').hide();
-    $('#results').hide();
+    // $('#results').hide();
     $('#results-header').hide();
     $('#overview-header').show();
-    $('#overview').show();
+    // $('#overview').show();
     $('#map-holder').show();
     $('#filter').off();
   };
