@@ -69,7 +69,7 @@
     $('#index').hide();
     $('#map-holder').show();
     $('#filter').off();
-    $('#results').show();
+    $('#results').show().css('display', 'flex');
   };
   
   
