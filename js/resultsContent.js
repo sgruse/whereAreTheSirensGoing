@@ -21,7 +21,7 @@
     var $resultsHandlebarsHere = $('#results-handlebars-here');
     $resultsHandlebarsHere.empty();
     incidents.forEach(function(thisIncident) {
-      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true);
+      maps.addMarker([+thisIncident.latitude, +thisIncident.longitude], true, {}, thisIncident);
       $resultsHandlebarsHere.append(resultsContent.render(thisIncident));
     });
     resultsContent.attachReadOnListenerAndHide();
