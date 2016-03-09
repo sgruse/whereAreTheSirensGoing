@@ -11,6 +11,9 @@
 .map-holder a{
   text-align: left;
   margin-left: 4px;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
 }
 
 #google-map {
@@ -21,14 +24,28 @@
   margin-right: auto;
 }
 
-.search{
-  width: 100%;
-}
+
 
 #navbar-address-search{
   display: inline-block;
-  width: 70%;
+  width: 100%;
   float: right;
-  margin-right: 4px;
+  /*margin-right: 4px;*/
   margin-bottom: .5em;
+}
+
+.search{
+  width: Calc(100% - 80px);
+}
+
+.nav-search-button{
+  float: right;
+}
+
+.h2sirens{
+  display: block;
+}
+
+.infoWindow-list{
+  padding: 0;
 }

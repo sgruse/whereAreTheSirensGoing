@@ -52,7 +52,9 @@
 }
 #index-form-container > li > button {
   width: 90%;
+  max-width: 400px;
 }
+
 #search-form-no-autodetect{
   max-width: 400px;
   margin-top: .5em;
@@ -60,6 +62,9 @@
   width: 90%;
 }
 
+#main-address-input{
+  width: Calc(100% - 80px);
+}
 
 
 #results {
