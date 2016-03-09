@@ -13,8 +13,8 @@
   padding-bottom: 36%;
   margin: 0;
 }
-.skyline-image{
-  background-image: url('/img/skyline3.png');
+.skyline-image {
+  background-image: url('/img/skylinewhite.png');
   background-repeat:no-repeat;
   background-size: cover;
   position: absolute;
@@ -60,6 +60,11 @@
   margin-top: .5em;
   display: none;
   width: 90%;
+}
+
+#search-form-no-autodetect > input{
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
 
 #main-address-input{
