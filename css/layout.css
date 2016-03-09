@@ -65,6 +65,7 @@
 #search-form-no-autodetect > input{
   /*-webkit-appearance: none;*/
   -webkit-border-radius: 0;
+  background-color: white;
 }
 
 #main-address-input{
