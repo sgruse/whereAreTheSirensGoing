@@ -3,6 +3,7 @@
     Object.keys(opts).forEach(function(e, index, keys){
       this[e] = opts[e];
     }, this);
+    this.event_clearance_date = this.event_clearance_date.replace('T', ' ').slice(0, -4);
   }
 
   Incident.all = [];

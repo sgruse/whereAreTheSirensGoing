@@ -46,6 +46,7 @@
   };
 
   //make search bar do something when submitted
+  //deprecated?
   search.attachSearchBarListener = function(){
     console.log('search.attachSearchBarListener called');
     $('#search-form').on('submit', function(event){

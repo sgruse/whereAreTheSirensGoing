@@ -1,12 +1,12 @@
+/*@media only screen and (min-width: 400px) {
+  
+  
+}*/
+
 @media only screen and (min-width: 500px) {
-  #index-form-container > li > button{
-    max-width: 400px;
+  .h2sirens{
+    display: inline-block;
   }
-  #main-address-input{
-    width: 265px;
-  }
-
-
 }
 
 @media only screen and (min-width: 700px) {
