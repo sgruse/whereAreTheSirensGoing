@@ -35,16 +35,16 @@
 }
 
 .search{
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;
   -webkit-border-radius: 0;
-  background-color: white;
+  background-color: white;*/
   width: Calc(100% - 80px);
 }
 
 .nav-search-button{
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;
   -webkit-border-radius: 0;
-  background-color: white;
+  background-color: white;*/
   float: right;
 }
 
