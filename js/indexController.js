@@ -13,6 +13,7 @@
     $('.overview').hide();
     $('#results-header').hide();
     $('#overview-header').hide();
+    $('#index').show();
 
     $indexMainButton.on('click', function(event){
       $indexMainButton.hide();
