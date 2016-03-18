@@ -31,7 +31,7 @@
         </article>
       </li>
     </script>
-    
+
     <script id="infoWindow-template" type="text/x-handlebars-template">
       <ul class="infoWindow-list">
         <li class="infoWindow-list-item">{{initial_type_subgroup}}</li>
@@ -40,13 +40,13 @@
       </ul>
     </script>
   </head>
-  
+
 
   <body>
 
     <header>
       <div class="headerdiv" id="headersirens">
-        <h1>Siren<span class="sirens">finder</span></h1>
+        <h1><a href="/" class="siren-link">Siren<span class="sirens">finder</span></a></h1>
       </div>
     </header>
 
@@ -91,7 +91,7 @@
           <h3>Filter by time:</h3>
           <label><input class="time-filter" type="radio" name ="time-filter" id="day" value="today" checked> Incidents today</label>
           <label><input class="time-filter" type="radio" name ="time-filter" id="month" value="month"> Incidents this Month</label>
-          
+
         </form>
         <h2 id="results-header" class="map-header">Incidents in <span class="sirens h2sirens">your area</span></h2>
         <h2 id="overview-header" class="map-header">Incidents in <span class="sirens h2sirens">all of Seattle</span></h2>
@@ -119,7 +119,7 @@
     <script src="/js/maps.js"></script>
     <script src="/js/incident.js"></script>
     <script src="/js/dataFetcher.js"></script>
-    
+
     <script src="/js/mapHolderController.js"></script>
     <script src="/js/resultsController.js"></script>
     <script src="/js/resultsContent.js"></script>

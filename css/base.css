@@ -67,3 +67,8 @@ header h1 {
   margin-top: 2%;
   max-width: 100%;
 }
+
+.siren-link {
+  text-decoration: none;
+  color: inherit;
+}
