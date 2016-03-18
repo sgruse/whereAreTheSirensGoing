@@ -8,9 +8,13 @@
       var currentTime = new Date();
       var thatTime = new Date(this.event_clearance_date);
       var deltaT = currentTime.getHours() - thatTime.getUTCHours();
-      if(deltaT){
-        this.event_clearance_date = deltaT + ' hours ago.';
-      } else {
+      if(deltaT){//if it was one or more hours ago
+        if (deltaT === 1){
+          this.event_clearance_date = deltaT + ' hour ago.';
+        } else {
+          this.event_clearance_date = deltaT + ' hours ago.';
+        }
+      } else {//if it was less than an hour ago
         deltaT = currentTime.getMinutes() - thatTime.getUTCMinutes();
         this.event_clearance_date = deltaT + ' minutes ago.';
       }
