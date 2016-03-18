@@ -38,7 +38,7 @@
     float: none;
   }
 
-  .map-holder a{
+  #city-view-link{
     position: absolute;
     bottom: 40px;
     right: 0;
