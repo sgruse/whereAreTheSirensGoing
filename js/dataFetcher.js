@@ -1,6 +1,4 @@
 (function (module){
-
-  // var appToken = '0vBJ6JiStgBAfDkeAJf5h7645';
   var dataFetcher = {};
 
   dataFetcher.filterCodes = {
@@ -15,9 +13,7 @@
   dataFetcher.formatSpecificUrlForApi = function(parameterObj){
     console.log('dataFetcher.formatSpecificUrlForApi called');
     console.log('input parameterObj', parameterObj);
-    // var formattedUrl = 'https://data.seattle.gov/resource/pu5n-trf4.json?';
     var formattedUrl = '/police/?';
-    // formattedUrl ;
     formattedUrl += dataFetcher.formatEventClearanceWhereClause(parameterObj.codes, parameterObj.time);
     if (parameterObj.lat && parameterObj.lng){
       formattedUrl += ' AND within_circle(incident_location,'+ parameterObj.lat + ',' + parameterObj.lng + ',1000)'; //stretch goal: make the 10000 a variable passed in through the parameters so that it can be related to google maps zoom
@@ -55,7 +51,6 @@
       url: url,
       type: 'GET',
       ContentType: 'json',
-      // headers: { 'X-App-Token': appToken },
       success: function(data, message, xhr){
         console.log(message);
         console.log('xhr is ', xhr);
