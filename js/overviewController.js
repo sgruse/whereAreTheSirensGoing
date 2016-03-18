@@ -23,6 +23,7 @@
     $('#results-handlebars-here').empty();
     mapHolderController.hideAndShowAppropriate();
     $('#results-header').hide();
+    $('#city-view-link').hide();
     $('#overview-header').show();
     $('#show-filters').on('click', resultsController.showFilters);
     mapHolderController.attachSearchBarListener();

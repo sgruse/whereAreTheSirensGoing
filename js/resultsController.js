@@ -32,6 +32,7 @@
     $('#results-handlebars-here').empty();
     console.log('resultsController.index called');
     mapHolderController.hideAndShowAppropriate();
+    $('#city-view-link').show();
     $('#results-header').show();
     $('#overview-header').hide();
     $('#show-filters').on('click', resultsController.showFilters);
