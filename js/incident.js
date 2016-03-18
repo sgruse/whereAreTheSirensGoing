@@ -15,7 +15,7 @@
         this.event_clearance_date = deltaT + ' minutes ago.';
       }
     } else {
-      this.event_clearance_date = this.event_clearance_date.replace('T', ' ').slice(0, -4);
+      this.event_clearance_date = this.event_clearance_date.replace('T', ' ').slice(0, -7);
     }
     
   }
