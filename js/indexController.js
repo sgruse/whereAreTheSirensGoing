@@ -14,6 +14,7 @@
     $('#results-header').hide();
     $('#overview-header').hide();
     $('#index').show();
+    $('#index-form-container').show();
 
     $indexMainButton.on('click', function(event){
       $indexMainButton.hide();
