@@ -3,7 +3,21 @@
     Object.keys(opts).forEach(function(e, index, keys){
       this[e] = opts[e];
     }, this);
-    this.event_clearance_date = this.event_clearance_date.replace('T', ' ').slice(0, -4);
+    
+    if(mapHolderController.currentTimeFilter === 'today'){
+      var currentTime = new Date();
+      var thatTime = new Date(this.event_clearance_date);
+      var deltaT = currentTime.getHours() - thatTime.getUTCHours();
+      if(deltaT){
+        this.event_clearance_date = deltaT + ' hours ago.';
+      } else {
+        deltaT = currentTime.getMinutes() - thatTime.getUTCMinutes();
+        this.event_clearance_date = deltaT + ' minutes ago.';
+      }
+    } else {
+      this.event_clearance_date = this.event_clearance_date.replace('T', ' ').slice(0, -4);
+    }
+    
   }
 
   Incident.all = [];
