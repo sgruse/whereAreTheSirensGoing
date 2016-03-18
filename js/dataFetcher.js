@@ -60,6 +60,12 @@
       error: function(){
         console.log('error receiveing data');
         callback();
+      },
+      beforeSend: function(){
+        $('.ajax-loader').show();
+      },
+      complete: function(){
+        $('.ajax-loader').hide();
       }
     });
   };

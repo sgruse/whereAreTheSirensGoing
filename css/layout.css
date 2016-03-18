@@ -156,3 +156,9 @@
 .float-right{
   float: right;
 }
+
+
+.ajax-loader{
+  margin: 20px;
+  display: none;
+}
