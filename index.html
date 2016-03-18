@@ -24,7 +24,7 @@
         <article class="incidents">
           <ul class="incident-list">
             <li class="incident-list-item">Type - {{initial_type_group}}</li>
-            <li class="incident-list-item">Subtype - {{initial_type_subgroup}}</li>
+            <li class="incident-list-item">Description - {{long_description}}</li>
             <li class="incident-list-item">Date/Time At Scene - {{event_clearance_date}}</li>
             <li class="incident-list-item">Location - {{hundred_block_location}}</li>
           </ul>
@@ -34,7 +34,8 @@
 
     <script id="infoWindow-template" type="text/x-handlebars-template">
       <ul class="infoWindow-list">
-        <li class="infoWindow-list-item">{{initial_type_subgroup}}</li>
+        <li class="infoWindow-list-item">{{initial_type_group}}</li>
+        <li class="infoWindow-list-item">{{long_description}}</li>
         <li class="infoWindow-list-item">{{event_clearance_date}}</li>
         <li class="infoWindow-list-item">{{hundred_block_location}}</li>
       </ul>

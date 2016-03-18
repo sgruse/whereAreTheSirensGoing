@@ -22,6 +22,12 @@
       this.event_clearance_date = this.event_clearance_date.replace('T', ' ').slice(0, -7);
     }
     
+    if (this.event_clearance_description.length > this.initial_type_description){
+      this.long_description = this.event_clearance_description;
+    } else {
+      this.long_description =this.initial_type_description;
+    }
+    
   }
 
   Incident.all = [];
