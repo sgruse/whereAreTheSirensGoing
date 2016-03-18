@@ -1,8 +1,8 @@
 (function(module){
   search = {};
-  // $searchBar = $('#search-bar');//placeholder name, need to be updated to be consistent with index
 
   search.getUserLocation = function(){
+    $('.ajax-loader').show();
     console.log('search.getUserLocation called');
     if (navigator.geolocation){
       console.log('navigator.geolocation supported by this browser');
@@ -17,10 +17,10 @@
 
   //if geolocation successfully detected
   search.geolocationSuccessCallback = function(results){
+    $('.ajax-loader').hide();
     console.log('search.geolocationSuccessCallback called');
     console.log('results is', results);
     search.encodeUrl(search.formatLocation(results));
-    //page function to go to next page
   };
 
   //this happens if we are denied permission to use their location, it's unavailable, or the request times out

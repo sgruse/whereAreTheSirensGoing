@@ -55,3 +55,10 @@
 .infoWindow-list{
   padding: 0;
 }
+#filter h3 {
+  display: inline-block;
+}
+.map-loader{
+  float: right;
+  display: inline-block;
+}

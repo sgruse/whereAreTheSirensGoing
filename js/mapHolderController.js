@@ -64,6 +64,7 @@
   
   //contains the shared functionality between the overview and results pages
   mapHolderController.hideAndShowAppropriate = function(){
+    $('.ajax-loader').show();
     $('body').css('background-color', 'white');
     $('header').css('border-bottom', '1px black solid');
     $('#index').hide();
