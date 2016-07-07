@@ -1,2 +1,5 @@
-# WhereAreTheSirensGoing
-Uses City of Seattle Apis to find nearby incidents.. 
+# SirenFinder
+
+Check out the app at: http://sirenfinder.herokuapp.com/
+
+
